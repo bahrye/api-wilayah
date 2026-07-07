@@ -49,31 +49,6 @@ Mendapatkan informasi detail nama suatu wilayah berdasarkan kodenya secara presi
 
 ---
 
-## 🚀 Panduan Setup & Deploy
-
-Proyek ini siap untuk dideploy ke **Cloudflare Pages**.
-
-### Prasyarat
-- Akun [Cloudflare](https://dash.cloudflare.com/)
-- [Node.js](https://nodejs.org/) terinstall
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) (`npm install -g wrangler`)
-
-### Langkah Deployment
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/bahrye/api-wilayah.git
-   cd api-wilayah
-   ```
-2. **Konfigurasi Cloudflare D1**
-   - Buat database D1 baru di dashboard Cloudflare Anda.
-   - Perbarui file `wrangler.toml` dan sesuaikan nilai `database_id` dengan ID Database yang baru Anda buat.
-3. **Deploy**
-   ```bash
-   npx wrangler pages deploy public --project-name api-wilayah-indo
-   ```
-
----
-
 ## 🔒 Catatan Keamanan
 - File `.wrangler/` dan konfigurasi *local-state* lainnya telah diabaikan dari repository ini untuk mencegah tereksposnya *blobs* database lokal ke publik.
 - Pastikan variabel rahasia seperti konfigurasi Redis (jika ada) ditambahkan via Cloudflare Dashboard (Secrets), **bukan** di-hardcode ke dalam kode.
