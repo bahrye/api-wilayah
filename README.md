@@ -1,6 +1,6 @@
 # 🇮🇩 API Wilayah Indonesia
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 API open-source yang cepat, modern, dan gratis untuk mendapatkan data administratif wilayah Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Desa/Kelurahan).
 
