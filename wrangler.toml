@@ -1,0 +1,8 @@
+name = "api-wilayah-indo"
+pages_build_output_dir = "public"
+compatibility_date = "2024-03-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wilayah-db"
+database_id = "db3712d5-267c-4205-bafd-4580f3d1d746"

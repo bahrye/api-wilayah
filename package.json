@@ -1,0 +1,13 @@
+{
+  "name": "api-wilayah-indo",
+  "version": "1.0.0",
+  "description": "API Wilayah Indonesia menggunakan Cloudflare Pages",
+  "scripts": {
+    "deploy": "npx wrangler pages deploy public --project-name api-wilayah-indo --branch production"
+  },
+  "author": "Syamsul Bahri",
+  "license": "MIT",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
