@@ -285,6 +285,52 @@
             }
         }
 
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         /* Demo Section */
         .demo-section {
             margin-bottom: 3rem;
@@ -423,6 +469,25 @@
             <h1>API Wilayah Indonesia</h1>
             <p class="subtitle">Akses data Provinsi, Kabupaten, Kecamatan, dan Desa seluruh Indonesia secara cepat, gratis, dan mudah digunakan.</p>
         </header>
+
+        <div class="stats-grid" id="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-provinsi">-</div>
+                <div class="stat-label">Provinsi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-kabupaten">-</div>
+                <div class="stat-label">Kabupaten</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-kecamatan">-</div>
+                <div class="stat-label">Kecamatan</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-desa">-</div>
+                <div class="stat-label">Desa/Kel.</div>
+            </div>
+        </div>
 
         <section class="demo-section">
             <div class="demo-header">
@@ -574,6 +639,39 @@
         const txtResult = document.getElementById('result-kode');
         const btnCopyResult = document.getElementById('btn-copy-result');
 
+        // Fetch Stats
+        async function fetchStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                
+                animateValue('stat-provinsi', data.provinsi);
+                animateValue('stat-kabupaten', data.kabupaten);
+                animateValue('stat-kecamatan', data.kecamatan);
+                animateValue('stat-desa', data.desa);
+            } catch (err) {
+                console.error("Gagal memuat statistik", err);
+            }
+        }
+        
+        function animateValue(id, end) {
+            if (!end) return;
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const duration = 1000;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * end).toLocaleString('id-ID');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.innerHTML = end.toLocaleString('id-ID');
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
         // Initial Data Fetch
         async function fetchProvinsi() {
             try {
@@ -690,8 +788,11 @@
             }
         });
 
-        // Initialize Demo
-        document.addEventListener('DOMContentLoaded', fetchProvinsi);
+        // Initialize Demo & Stats
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchStats();
+            fetchProvinsi();
+        });
 
         // Copy to clipboard functionality (Endpoints)
         function copyUrl(path, btnElement) {
