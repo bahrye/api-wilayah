@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Wilayah Indonesia</title>
-    <meta name="description" content="RESTful API Wilayah Administrasi Indonesia (Provinsi, Kabupaten, Kecamatan, Desa) yang berjalan di Cloudflare Pages + D1 Database.">
+    <meta name="description"
+        content="RESTful API Wilayah Administrasi Indonesia (Provinsi, Kabupaten, Kecamatan, Desa) yang berjalan di Cloudflare Pages + D1 Database.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             /* Light Theme Colors */
@@ -36,11 +40,12 @@
             min-height: 100vh;
             position: relative;
             /* Prevents horizontal scrolling on small screens */
-            overflow-x: hidden; 
+            overflow-x: hidden;
         }
 
         /* Ambient Glow Background - Light version */
-        body::before, body::after {
+        body::before,
+        body::after {
             content: '';
             position: absolute;
             width: 50vw;
@@ -68,8 +73,15 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.2; }
-            100% { transform: scale(1.1) translate(20px, 20px); opacity: 0.4; }
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(1.1) translate(20px, 20px);
+                opacity: 0.4;
+            }
         }
 
         .container {
@@ -104,6 +116,7 @@
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #18181b 0%, #71717a 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
         }
@@ -169,7 +182,8 @@
             font-weight: 800;
             font-size: 0.8rem;
             letter-spacing: 0.05em;
-            flex-shrink: 0; /* Prevents button from shrinking on small screens */
+            flex-shrink: 0;
+            /* Prevents button from shrinking on small screens */
         }
 
         .code-container {
@@ -193,13 +207,14 @@
             overflow-x: auto;
             white-space: nowrap;
             /* Allows code block to shrink */
-            min-width: 0; 
+            min-width: 0;
             flex-grow: 1;
         }
-        
+
         code::-webkit-scrollbar {
             height: 4px;
         }
+
         code::-webkit-scrollbar-thumb {
             background: #d4d4d8;
             border-radius: 10px;
@@ -259,7 +274,7 @@
         .data-source a:hover {
             text-decoration: underline;
         }
-        
+
         .creator-tag {
             display: inline-flex;
             align-items: center;
@@ -270,7 +285,7 @@
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid var(--card-border);
             border-radius: 50px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
         }
 
         .creator-tag svg {
@@ -285,17 +300,21 @@
                 flex-direction: column-reverse;
                 gap: 0.5rem;
             }
+
             .container {
                 padding: 2rem 1rem;
             }
+
             .code-container {
                 margin-top: 0;
             }
+
             .result-box {
                 flex-direction: column;
                 align-items: stretch;
                 text-align: center;
             }
+
             .result-content p {
                 font-size: 1.25rem;
                 word-break: break-all;
@@ -471,20 +490,22 @@
         .result-copy-btn:hover:not(:disabled) {
             background: rgba(255, 255, 255, 0.2);
         }
-        
+
         .result-copy-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <header>
             <div class="badge">API Wilayah Administrasi</div>
             <h1>API Wilayah Indonesia</h1>
-            <p class="subtitle">Akses data Provinsi, Kabupaten, Kecamatan, dan Desa seluruh Indonesia secara cepat, gratis, dan mudah digunakan.</p>
+            <p class="subtitle">Akses data Provinsi, Kabupaten, Kecamatan, dan Desa seluruh Indonesia secara cepat,
+                gratis, dan mudah digunakan.</p>
         </header>
 
         <div class="stats-grid" id="stats-container">
@@ -511,7 +532,7 @@
                 <h2>Cari Wilayah (Demo API)</h2>
                 <p>Coba langsung fitur pencarian wilayah berjenjang menggunakan API ini.</p>
             </div>
-            
+
             <div class="demo-grid">
                 <div class="input-group">
                     <label for="provinsi">Provinsi</label>
@@ -545,13 +566,18 @@
                     <p id="result-kode">-</p>
                 </div>
                 <button class="result-copy-btn" id="btn-copy-result" title="Salin Kode" disabled>
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                        </path>
+                    </svg>
                 </button>
             </div>
         </section>
 
         <main class="endpoints-grid">
-            
+
             <!-- Provinsi -->
             <div class="endpoint-card">
                 <div class="endpoint-header">
@@ -564,7 +590,11 @@
                 <div class="code-container">
                     <code>/api/provinsi</code>
                     <button class="copy-btn" onclick="copyUrl('/api/provinsi', this)" title="Salin URL">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -581,7 +611,11 @@
                 <div class="code-container">
                     <code>/api/kabupaten?provinsi=11</code>
                     <button class="copy-btn" onclick="copyUrl('/api/kabupaten?provinsi=11', this)" title="Salin URL">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -597,8 +631,13 @@
                 </div>
                 <div class="code-container">
                     <code>/api/kecamatan?kabupaten=11.01</code>
-                    <button class="copy-btn" onclick="copyUrl('/api/kecamatan?kabupaten=11.01', this)" title="Salin URL">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <button class="copy-btn" onclick="copyUrl('/api/kecamatan?kabupaten=11.01', this)"
+                        title="Salin URL">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -615,7 +654,11 @@
                 <div class="code-container">
                     <code>/api/desa?kecamatan=11.01.01</code>
                     <button class="copy-btn" onclick="copyUrl('/api/desa?kecamatan=11.01.01', this)" title="Salin URL">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -631,8 +674,13 @@
                 </div>
                 <div class="code-container">
                     <code>/api/detail?kode=11.01.01.2001</code>
-                    <button class="copy-btn" onclick="copyUrl('/api/detail?kode=11.01.01.2001', this)" title="Salin URL">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <button class="copy-btn" onclick="copyUrl('/api/detail?kode=11.01.01.2001', this)"
+                        title="Salin URL">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -641,13 +689,18 @@
 
         <footer>
             <div class="data-source">
-                Sumber data: <strong>Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 Tahun 2025</strong> tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau. <br>
-                <a href="https://drive.google.com/drive/folders/1UjLUey9B0sIdkDwccr4AXnU4-Kg6ZJHD" target="_blank" rel="noopener noreferrer">Akses File Asli (Google Drive)</a>
+                Sumber data: <strong>Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 Tahun 2025</strong> tentang
+                Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau. <br>
+                <a href="https://drive.google.com/file/d/1mSR9PspjtrPpX3M8b1oQaNLzX5cuvUen/view?usp=sharing"
+                    target="_blank" rel="noopener noreferrer">Akses File Asli (Google Drive)</a>
             </div>
-            
+
             <div class="creator-tag">
                 Created by Syamsul Bahri
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
             </div>
         </footer>
     </div>
@@ -666,7 +719,7 @@
             try {
                 const res = await fetch('/api/stats');
                 const data = await res.json();
-                
+
                 animateValue('stat-provinsi', data.provinsi);
                 animateValue('stat-kabupaten', data.kabupaten);
                 animateValue('stat-kecamatan', data.kecamatan);
@@ -675,7 +728,7 @@
                 console.error("Gagal memuat statistik", err);
             }
         }
-        
+
         function animateValue(id, end) {
             if (!end) return;
             const obj = document.getElementById(id);
@@ -742,9 +795,9 @@
             resetSelect(selKecamatan, 'Pilih Kecamatan');
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
             setResultCode(kode);
-            
+
             if (!kode) return;
-            
+
             selKabupaten.innerHTML = '<option value="">Memuat...</option>';
             try {
                 const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
@@ -761,9 +814,9 @@
             resetSelect(selKecamatan, 'Pilih Kecamatan');
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
             setResultCode(kode || selProvinsi.value);
-            
+
             if (!kode) return;
-            
+
             selKecamatan.innerHTML = '<option value="">Memuat...</option>';
             try {
                 const res = await fetch(`/api/kecamatan?kabupaten=${kode}`);
@@ -779,9 +832,9 @@
             const kode = e.target.value;
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
             setResultCode(kode || selKabupaten.value);
-            
+
             if (!kode) return;
-            
+
             selDesa.innerHTML = '<option value="">Memuat...</option>';
             try {
                 const res = await fetch(`/api/desa?kecamatan=${kode}`);
@@ -832,4 +885,5 @@
         }
     </script>
 </body>
+
 </html>
