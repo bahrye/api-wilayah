@@ -333,11 +333,13 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
-            padding: 1.25rem 1rem;
+            padding: 1.25rem 0.5rem; /* Reduced horizontal padding */
             text-align: center;
             backdrop-filter: blur(12px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s;
+            min-width: 0; /* Prevent grid blowout */
+            overflow: hidden; /* Hide overflowing content */
         }
 
         .stat-card:hover {
@@ -359,15 +361,12 @@
 
         .stat-view-split {
             display: none;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
+            justify-content: space-evenly;
+            gap: 0.25rem;
             height: 100%;
             align-items: center;
             animation: fadeIn 0.3s;
-        }
-        
-        .stat-view-split.triple {
-            grid-template-columns: 1fr 1fr 1fr;
+            flex-wrap: wrap; /* Wraps items when they are too tight */
         }
 
         .stat-card.show-split .stat-view-main {
@@ -375,7 +374,7 @@
         }
 
         .stat-card.show-split .stat-view-split {
-            display: grid;
+            display: flex; /* Changed from grid to flex */
         }
 
         .stat-split-item {
@@ -383,15 +382,22 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            flex: 1 1 30%; /* Take up available space, but minimum 30% width */
+            min-width: 45px; /* Ensure they don't get impossibly thin */
         }
 
         .stat-value.small {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.1rem;
+            word-break: break-all; /* Break long numbers if needed */
         }
         
         .stat-label.small {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            line-height: 1.1;
+            text-align: center;
+            word-wrap: break-word;
+            hyphens: auto;
         }
         
         @keyframes fadeIn {
