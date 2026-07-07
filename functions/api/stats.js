@@ -14,8 +14,7 @@ export async function onRequest({ env }) {
       desa_kel: 0,
       desa_kel_split: {
         DESA: 0,
-        KELURAHAN: 0,
-        'DESA ADAT': 0
+        KELURAHAN: 0
       }
     };
     

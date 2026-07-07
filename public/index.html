@@ -598,7 +598,7 @@
                     <div class="stat-value" id="stat-desa_kel">-</div>
                     <div class="stat-label">Desa/Kel.</div>
                 </div>
-                <div class="stat-view-split triple">
+                <div class="stat-view-split">
                     <div class="stat-split-item">
                         <div class="stat-value small" id="stat-desa">-</div>
                         <div class="stat-label small">Desa</div>
@@ -606,10 +606,6 @@
                     <div class="stat-split-item">
                         <div class="stat-value small" id="stat-kelurahan">-</div>
                         <div class="stat-label small">Kelurahan</div>
-                    </div>
-                    <div class="stat-split-item">
-                        <div class="stat-value small" id="stat-desa_adat">-</div>
-                        <div class="stat-label small">Desa Adat</div>
                     </div>
                 </div>
             </div>
@@ -821,7 +817,6 @@
                 if (data.desa_kel_split) {
                     animateValue('stat-desa', data.desa_kel_split.DESA || 0);
                     animateValue('stat-kelurahan', data.desa_kel_split.KELURAHAN || 0);
-                    animateValue('stat-desa_adat', data.desa_kel_split['DESA ADAT'] || 0);
                 }
             } catch (err) {
                 console.error("Gagal memuat statistik", err);
