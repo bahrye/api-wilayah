@@ -275,6 +275,135 @@
                 margin-top: 0;
             }
         }
+
+        /* Demo Section */
+        .demo-section {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+        }
+
+        .demo-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .demo-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .custom-select {
+            appearance: none;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+        .custom-select:hover:not(:disabled) {
+            border-color: #cbd5e1;
+            background-color: #fff;
+        }
+
+        .custom-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        .custom-select:disabled {
+            background-color: #f4f4f5;
+            color: #a1a1aa;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #18181b 0%, #3f3f46 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .result-content h4 {
+            font-size: 0.875rem;
+            color: #a1a1aa;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-content p {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .result-copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-copy-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-copy-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -285,6 +414,50 @@
             <h1>API Wilayah Indonesia</h1>
             <p class="subtitle">Akses data Provinsi, Kabupaten, Kecamatan, dan Desa seluruh Indonesia secara cepat, gratis, dan mudah digunakan.</p>
         </header>
+
+        <section class="demo-section">
+            <div class="demo-header">
+                <h2>Cari Wilayah (Demo API)</h2>
+                <p>Coba langsung fitur pencarian wilayah berjenjang menggunakan API ini.</p>
+            </div>
+            
+            <div class="demo-grid">
+                <div class="input-group">
+                    <label for="provinsi">Provinsi</label>
+                    <select id="provinsi" class="custom-select">
+                        <option value="">Memuat...</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="kabupaten">Kabupaten/Kota</label>
+                    <select id="kabupaten" class="custom-select" disabled>
+                        <option value="">Pilih Provinsi terlebih dahulu</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="kecamatan">Kecamatan</label>
+                    <select id="kecamatan" class="custom-select" disabled>
+                        <option value="">Pilih Kabupaten terlebih dahulu</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="desa">Desa/Kelurahan</label>
+                    <select id="desa" class="custom-select" disabled>
+                        <option value="">Pilih Kecamatan terlebih dahulu</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-content">
+                    <h4>Kode Wilayah Terpilih</h4>
+                    <p id="result-kode">-</p>
+                </div>
+                <button class="result-copy-btn" id="btn-copy-result" title="Salin Kode" disabled>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </button>
+            </div>
+        </section>
 
         <main class="endpoints-grid">
             
@@ -384,7 +557,134 @@
     </div>
 
     <script>
-        // Copy to clipboard functionality
+        // DOM Elements for Demo API
+        const selProvinsi = document.getElementById('provinsi');
+        const selKabupaten = document.getElementById('kabupaten');
+        const selKecamatan = document.getElementById('kecamatan');
+        const selDesa = document.getElementById('desa');
+        const txtResult = document.getElementById('result-kode');
+        const btnCopyResult = document.getElementById('btn-copy-result');
+
+        // Initial Data Fetch
+        async function fetchProvinsi() {
+            try {
+                const res = await fetch('/api/provinsi');
+                const data = await res.json();
+                populateSelect(selProvinsi, data, 'Pilih Provinsi');
+            } catch (err) {
+                console.error(err);
+                selProvinsi.innerHTML = '<option value="">Gagal memuat data</option>';
+            }
+        }
+
+        // Helper to populate select
+        function populateSelect(selectElement, data, placeholder) {
+            selectElement.innerHTML = `<option value="">${placeholder}</option>`;
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.kode;
+                option.textContent = item.nama;
+                selectElement.appendChild(option);
+            });
+            selectElement.disabled = false;
+        }
+
+        // Helper to reset and disable select
+        function resetSelect(selectElement, message) {
+            selectElement.innerHTML = `<option value="">${message}</option>`;
+            selectElement.disabled = true;
+        }
+
+        // Set result code
+        function setResultCode(code) {
+            if (code) {
+                txtResult.textContent = code;
+                btnCopyResult.disabled = false;
+            } else {
+                txtResult.textContent = '-';
+                btnCopyResult.disabled = true;
+            }
+        }
+
+        // Event Listeners
+        selProvinsi.addEventListener('change', async (e) => {
+            const kode = e.target.value;
+            resetSelect(selKabupaten, 'Pilih Kabupaten/Kota');
+            resetSelect(selKecamatan, 'Pilih Kecamatan');
+            resetSelect(selDesa, 'Pilih Desa/Kelurahan');
+            setResultCode(kode);
+            
+            if (!kode) return;
+            
+            selKabupaten.innerHTML = '<option value="">Memuat...</option>';
+            try {
+                const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
+                const data = await res.json();
+                populateSelect(selKabupaten, data, 'Pilih Kabupaten/Kota');
+            } catch (err) {
+                console.error(err);
+                resetSelect(selKabupaten, 'Gagal memuat data');
+            }
+        });
+
+        selKabupaten.addEventListener('change', async (e) => {
+            const kode = e.target.value;
+            resetSelect(selKecamatan, 'Pilih Kecamatan');
+            resetSelect(selDesa, 'Pilih Desa/Kelurahan');
+            setResultCode(kode || selProvinsi.value);
+            
+            if (!kode) return;
+            
+            selKecamatan.innerHTML = '<option value="">Memuat...</option>';
+            try {
+                const res = await fetch(`/api/kecamatan?kabupaten=${kode}`);
+                const data = await res.json();
+                populateSelect(selKecamatan, data, 'Pilih Kecamatan');
+            } catch (err) {
+                console.error(err);
+                resetSelect(selKecamatan, 'Gagal memuat data');
+            }
+        });
+
+        selKecamatan.addEventListener('change', async (e) => {
+            const kode = e.target.value;
+            resetSelect(selDesa, 'Pilih Desa/Kelurahan');
+            setResultCode(kode || selKabupaten.value);
+            
+            if (!kode) return;
+            
+            selDesa.innerHTML = '<option value="">Memuat...</option>';
+            try {
+                const res = await fetch(`/api/desa?kecamatan=${kode}`);
+                const data = await res.json();
+                populateSelect(selDesa, data, 'Pilih Desa/Kelurahan');
+            } catch (err) {
+                console.error(err);
+                resetSelect(selDesa, 'Gagal memuat data');
+            }
+        });
+
+        selDesa.addEventListener('change', (e) => {
+            setResultCode(e.target.value || selKecamatan.value);
+        });
+
+        btnCopyResult.addEventListener('click', () => {
+            const code = txtResult.textContent;
+            if (code && code !== '-') {
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalSvg = btnCopyResult.innerHTML;
+                    btnCopyResult.innerHTML = `<svg fill="none" stroke="#22c55e" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+                    setTimeout(() => {
+                        btnCopyResult.innerHTML = originalSvg;
+                    }, 2000);
+                });
+            }
+        });
+
+        // Initialize Demo
+        document.addEventListener('DOMContentLoaded', fetchProvinsi);
+
+        // Copy to clipboard functionality (Endpoints)
         function copyUrl(path, btnElement) {
             const fullUrl = window.location.origin + path;
             navigator.clipboard.writeText(fullUrl).then(() => {
