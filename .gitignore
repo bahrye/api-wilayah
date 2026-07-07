@@ -6,3 +6,5 @@ node_modules/
 *.sqlite
 output_kv/
 .DS_Store
+functions/api/
+wrangler.toml
