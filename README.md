@@ -1,27 +1,23 @@
 # 🇮🇩 API Wilayah Indonesia
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Platform](https://img.shields.io/badge/Platform-Cloudflare%20Workers-orange.svg)
-![Database](https://img.shields.io/badge/Database-Cloudflare%20D1-black.svg)
-![Cache](https://img.shields.io/badge/Cache-Redis%20%2B%20CF-red.svg)
 
-API open-source yang cepat, modern, dan gratis untuk mendapatkan data administratif wilayah Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Desa/Kelurahan). Dibangun secara *serverless* di atas ekosistem **Cloudflare Pages / Workers**, ditenagai oleh **Cloudflare D1** dan dioptimasi menggunakan **Redis & Cloudflare Cache TTL (7 Hari)** untuk performa yang luar biasa cepat.
+API open-source yang cepat, modern, dan gratis untuk mendapatkan data administratif wilayah Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Desa/Kelurahan).
 
 ---
 
 ## ✨ Fitur Utama
 
-- 🚀 **Super Cepat & Serverless**: Berjalan di *edge network* Cloudflare, memberikan latensi yang sangat rendah dari seluruh Indonesia.
-- 💾 **Dual-Layer Caching**: Respons di-cache di Redis dan Edge Cache Cloudflare dengan durasi hingga 1 minggu, meminimalkan beban database hingga mendekati 0.
+- 🚀 **Super Cepat**: Memberikan respons dengan latensi yang sangat rendah dari seluruh Indonesia.
 - 📂 **Data Lengkap**: Terdiri dari entitas Provinsi, Kabupaten/Kota, Kecamatan, dan Desa/Kelurahan.
 - 🛠 **Mudah Digunakan**: Endpoint RESTful yang simpel dengan respons format JSON.
-- 🛡 **CORS Ready**: Middleware bawaan agar dapat diakses secara langsung dari frontend (web/mobile).
+- 🛡 **CORS Ready**: Dapat diakses secara langsung dari aplikasi frontend (web/mobile).
 
 ---
 
 ## 📖 Endpoint Dokumentasi
 
-Base URL: `https://<domain-anda.com>/api`
+Base URL: `https://api-wilayah-indo.pages.dev`
 
 ### 1. `GET /api/provinsi`
 Mendapatkan seluruh daftar provinsi di Indonesia.
@@ -46,15 +42,6 @@ Mendapatkan daftar desa/kelurahan berdasarkan kode kecamatan.
 Mendapatkan informasi detail nama suatu wilayah berdasarkan kodenya secara presisi.
 - **Parameter**: `kode` (contoh: `11.01.01.2001`)
 - **Response**: `{ "kode": "11.01.01.2001", "nama": "KEUDE BAKONGAN" }`
-
----
-
-## 🔒 Catatan Keamanan
-- File `.wrangler/` dan konfigurasi *local-state* lainnya telah diabaikan dari repository ini untuk mencegah tereksposnya *blobs* database lokal ke publik.
-- Pastikan variabel rahasia seperti konfigurasi Redis (jika ada) ditambahkan via Cloudflare Dashboard (Secrets), **bukan** di-hardcode ke dalam kode.
-
-## 🤝 Kontribusi
-Kami sangat terbuka dengan *Pull Request* atau *Issue* jika Anda menemukan *bug* atau ingin menambahkan fitur baru!
 
 ---
 *Dibuat dengan ❤️ untuk developer Indonesia.*
