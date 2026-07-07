@@ -30,13 +30,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        html, body {
-            overflow-x: hidden;
-            max-width: 100vw;
-        }
-
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
@@ -46,9 +39,16 @@
             position: relative;
         }
 
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden; /* Clips the background glows safely */
+            min-height: 100vh;
+        }
+
         /* Ambient Glow Background - Light version */
-        body::before,
-        body::after {
+        .app-wrapper::before,
+        .app-wrapper::after {
             content: '';
             position: absolute;
             width: 50vw;
@@ -62,13 +62,13 @@
             animation: pulse 12s ease-in-out infinite alternate;
         }
 
-        body::before {
+        .app-wrapper::before {
             background: #fca5a5;
             top: -10vw;
             left: -10vw;
         }
 
-        body::after {
+        .app-wrapper::after {
             background: #bae6fd;
             bottom: -10vw;
             right: -10vw;
@@ -563,8 +563,8 @@
 </head>
 
 <body>
-
-    <div class="container">
+    <div class="app-wrapper">
+        <div class="container">
         <header>
             <div class="badge">API Wilayah Administrasi</div>
             <h1>API Wilayah Indonesia</h1>
@@ -791,6 +791,7 @@
                 </svg>
             </div>
         </footer>
+    </div>
     </div>
 
     <script>
