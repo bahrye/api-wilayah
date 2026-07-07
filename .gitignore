@@ -8,3 +8,4 @@ output_kv/
 .DS_Store
 functions/api/
 wrangler.toml
+package.json
