@@ -345,6 +345,60 @@
             border-color: #cbd5e1;
         }
 
+        .stat-card.clickable {
+            cursor: pointer;
+        }
+
+        .stat-view-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            transition: opacity 0.3s;
+        }
+
+        .stat-view-split {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            height: 100%;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+        
+        .stat-view-split.triple {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .stat-card.show-split .stat-view-main {
+            display: none;
+        }
+
+        .stat-card.show-split .stat-view-split {
+            display: grid;
+        }
+
+        .stat-split-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-value.small {
+            font-size: 1.1rem;
+            margin-bottom: 0.1rem;
+        }
+        
+        .stat-label.small {
+            font-size: 0.7rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .stat-value {
             font-size: 1.75rem;
             font-weight: 700;
@@ -513,17 +567,45 @@
                 <div class="stat-value" id="stat-provinsi">-</div>
                 <div class="stat-label">Provinsi</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value" id="stat-kabupaten">-</div>
-                <div class="stat-label">Kabupaten</div>
+            <div class="stat-card clickable" onclick="this.classList.toggle('show-split')" title="Klik untuk melihat detail">
+                <div class="stat-view-main">
+                    <div class="stat-value" id="stat-kab_kota">-</div>
+                    <div class="stat-label">Kab/Kota</div>
+                </div>
+                <div class="stat-view-split">
+                    <div class="stat-split-item">
+                        <div class="stat-value small" id="stat-kabupaten">-</div>
+                        <div class="stat-label small">Kabupaten</div>
+                    </div>
+                    <div class="stat-split-item">
+                        <div class="stat-value small" id="stat-kota">-</div>
+                        <div class="stat-label small">Kota</div>
+                    </div>
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="stat-kecamatan">-</div>
                 <div class="stat-label">Kecamatan</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value" id="stat-desa">-</div>
-                <div class="stat-label">Desa/Kel.</div>
+            <div class="stat-card clickable" onclick="this.classList.toggle('show-split')" title="Klik untuk melihat detail">
+                <div class="stat-view-main">
+                    <div class="stat-value" id="stat-desa_kel">-</div>
+                    <div class="stat-label">Desa/Kel.</div>
+                </div>
+                <div class="stat-view-split triple">
+                    <div class="stat-split-item">
+                        <div class="stat-value small" id="stat-desa">-</div>
+                        <div class="stat-label small">Desa</div>
+                    </div>
+                    <div class="stat-split-item">
+                        <div class="stat-value small" id="stat-kelurahan">-</div>
+                        <div class="stat-label small">Kelurahan</div>
+                    </div>
+                    <div class="stat-split-item">
+                        <div class="stat-value small" id="stat-desa_adat">-</div>
+                        <div class="stat-label small">Desa Adat</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -721,9 +803,20 @@
                 const data = await res.json();
 
                 animateValue('stat-provinsi', data.provinsi);
-                animateValue('stat-kabupaten', data.kabupaten);
+                animateValue('stat-kab_kota', data.kab_kota);
                 animateValue('stat-kecamatan', data.kecamatan);
-                animateValue('stat-desa', data.desa);
+                animateValue('stat-desa_kel', data.desa_kel);
+                
+                if (data.kab_kota_split) {
+                    animateValue('stat-kabupaten', data.kab_kota_split.KABUPATEN || 0);
+                    animateValue('stat-kota', data.kab_kota_split.KOTA || 0);
+                }
+                
+                if (data.desa_kel_split) {
+                    animateValue('stat-desa', data.desa_kel_split.DESA || 0);
+                    animateValue('stat-kelurahan', data.desa_kel_split.KELURAHAN || 0);
+                    animateValue('stat-desa_adat', data.desa_kel_split['DESA ADAT'] || 0);
+                }
             } catch (err) {
                 console.error("Gagal memuat statistik", err);
             }

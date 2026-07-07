@@ -1,30 +1,35 @@
 export async function onRequest({ env }) {
   try {
-    const query = "SELECT length(kode) as len, count(*) as count FROM wilayah GROUP BY length(kode)";
+    const query = "SELECT length(kode) as len, tipe, count(*) as count FROM wilayah GROUP BY length(kode), tipe";
     const { results } = await env.DB.prepare(query).all();
-    
-    // Mapping format:
-    // length 2  => provinsi
-    // length 5  => kabupaten
-    // length 8  => kecamatan
-    // length 13 => desa
-    const mapping = {
-      2: 'provinsi',
-      5: 'kabupaten',
-      8: 'kecamatan',
-      13: 'desa'
-    };
     
     const stats = {
       provinsi: 0,
-      kabupaten: 0,
+      kab_kota: 0,
+      kab_kota_split: {
+        KABUPATEN: 0,
+        KOTA: 0
+      },
       kecamatan: 0,
-      desa: 0
+      desa_kel: 0,
+      desa_kel_split: {
+        DESA: 0,
+        KELURAHAN: 0,
+        'DESA ADAT': 0
+      }
     };
     
     for (const row of results) {
-      if (mapping[row.len]) {
-        stats[mapping[row.len]] = row.count;
+      if (row.len === 2) {
+        stats.provinsi += row.count;
+      } else if (row.len === 5) {
+        stats.kab_kota += row.count;
+        if (row.tipe) stats.kab_kota_split[row.tipe] = row.count;
+      } else if (row.len === 8) {
+        stats.kecamatan += row.count;
+      } else if (row.len === 13) {
+        stats.desa_kel += row.count;
+        if (row.tipe) stats.desa_kel_split[row.tipe] = row.count;
       }
     }
     
