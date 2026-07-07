@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API Wilayah Indonesia menggunakan Cloudflare Pages",
   "scripts": {
-    "deploy": "git push origin main:production"
+    "deploy": "npx wrangler pages deploy public --project-name api-wilayah-indo --branch production"
   },
   "author": "Syamsul Bahri",
   "license": "MIT"
