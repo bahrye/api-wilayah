@@ -633,7 +633,7 @@
           <div class="badge">API Wilayah Administrasi</div>
           <h1>API Wilayah Indonesia</h1>
           <p class="subtitle">
-            Akses data Provinsi, Kabupaten, Kecamatan, dan Desa seluruh
+            Akses data Provinsi, Kabupaten, Kecamatan, Desa, dan Kode Pos seluruh
             Indonesia secara cepat, gratis, dan mudah digunakan.
           </p>
         </header>
@@ -762,6 +762,24 @@
                 ></path>
               </svg>
             </button>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="demo-header">
+            <h2>Cari Wilayah Berdasarkan Kode Pos</h2>
+            <p>Masukkan kode pos untuk melihat daftar wilayah terkait.</p>
+          </div>
+          <div class="demo-grid" style="grid-template-columns: 1fr;">
+            <div class="input-group">
+              <label for="input-kodepos-search">Kode Pos</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="input-kodepos-search" class="custom-select" style="flex: 1; background-image: none;" placeholder="Contoh: 16110" />
+                <button id="btn-search-kodepos" class="badge" style="margin-bottom: 0; cursor: pointer; border: none; font-family: inherit;">Cari</button>
+              </div>
+            </div>
+          </div>
+          <div id="kodepos-search-result" style="display: none; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--card-border); padding: 1.5rem; margin-top: 1rem; max-height: 300px; overflow-y: auto;">
           </div>
         </section>
 
@@ -912,6 +930,39 @@
               <button
                 class="copy-btn"
                 onclick="copyUrl('/api/detail?kode=11.01.01.2001', this)"
+                title="Salin URL"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kode Pos -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Detail Kode Pos</h3>
+                <p>Mendapatkan daftar wilayah berdasarkan kode pos.</p>
+              </div>
+              <span class="method">GET</span>
+            </div>
+            <div class="code-container">
+              <code>/api/kodepos?kodepos=16110</code>
+              <button
+                class="copy-btn"
+                onclick="copyUrl('/api/kodepos?kodepos=16110', this)"
                 title="Salin URL"
               >
                 <svg
@@ -1150,6 +1201,61 @@
       document.addEventListener("DOMContentLoaded", () => {
         fetchStats();
         fetchProvinsi();
+      });
+
+      // Search Kodepos Logic
+      const inputKodeposSearch = document.getElementById("input-kodepos-search");
+      const btnSearchKodepos = document.getElementById("btn-search-kodepos");
+      const kodeposSearchResult = document.getElementById("kodepos-search-result");
+
+      btnSearchKodepos.addEventListener("click", async () => {
+        const kodepos = inputKodeposSearch.value.trim();
+        if (!kodepos) return;
+
+        btnSearchKodepos.textContent = "Mencari...";
+        btnSearchKodepos.disabled = true;
+        kodeposSearchResult.style.display = "block";
+        kodeposSearchResult.innerHTML = "<p style='text-align:center; color:var(--text-muted);'>Mencari data...</p>";
+
+        try {
+          const res = await fetch(`/api/kodepos?kodepos=${kodepos}`);
+          if (!res.ok) {
+            const data = await res.json();
+            kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">${data.error || 'Terjadi kesalahan'}</p>`;
+          } else {
+            const data = await res.json();
+            if (data.length === 0) {
+              kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--text-muted);">Tidak ditemukan wilayah dengan kode pos ${kodepos}</p>`;
+            } else {
+              let html = `<p style="margin-bottom:1rem; font-weight:600;">Ditemukan ${data.length} wilayah:</p><div style="display:flex; flex-direction:column; gap:0.75rem;">`;
+              data.forEach(item => {
+                html += \`
+                  <div style="padding:0.75rem; border:1px solid var(--card-border); border-radius:6px; background:rgba(255,255,255,0.5);">
+                    <div style="font-weight:600; color:var(--text-main); margin-bottom:0.25rem;">\${item.nama} <span style="font-size:0.75rem; background:var(--code-bg); padding:2px 6px; border-radius:4px; font-weight:normal; margin-left:4px;">\${item.tipe}</span></div>
+                    <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.4;">
+                      Kecamatan: \${item.nama_kecamatan || '-'}<br/>
+                      Kabupaten/Kota: \${item.nama_kabupaten || '-'}<br/>
+                      Provinsi: \${item.nama_provinsi || '-'}
+                    </div>
+                  </div>
+                \`;
+              });
+              html += '</div>';
+              kodeposSearchResult.innerHTML = html;
+            }
+          }
+        } catch (err) {
+          kodeposSearchResult.innerHTML = \`<p style="text-align:center; color:var(--primary);">Gagal mengambil data</p>\`;
+        } finally {
+          btnSearchKodepos.textContent = "Cari";
+          btnSearchKodepos.disabled = false;
+        }
+      });
+
+      inputKodeposSearch.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          btnSearchKodepos.click();
+        }
       });
 
       // Copy to clipboard functionality (Endpoints)
