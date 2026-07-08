@@ -744,14 +744,14 @@
           <h2>Cari Wilayah Berdasarkan Kode Pos</h2>
           <p>Masukkan kode pos untuk melihat daftar wilayah terkait.</p>
         </div>
-        <div class="demo-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 0 auto;">
+        <div class="demo-grid" style="grid-template-columns: 1fr; width: 100%; max-width: 400px; margin: 0 auto;">
           <div class="input-group">
             <label for="input-kodepos-search" style="text-align: center;">Kode Pos</label>
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <div style="display: flex; gap: 0.5rem; align-items: stretch; justify-content: center; width: 100%;">
               <input type="text" id="input-kodepos-search" class="custom-select"
-                style="flex: 1; background-image: none; text-align: center;" placeholder="Contoh: 16110" />
+                style="flex: 1; min-width: 0; width: 100%; background-image: none; text-align: center;" placeholder="Contoh: 16110" />
               <button id="btn-search-kodepos" class="badge"
-                style="margin-bottom: 0; cursor: pointer; border: none; font-family: inherit; flex-shrink: 0;">Cari</button>
+                style="margin-bottom: 0; cursor: pointer; border: none; font-family: inherit; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 0.75rem 1.2rem;">Cari</button>
             </div>
           </div>
         </div>
