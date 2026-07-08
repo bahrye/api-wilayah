@@ -1,64 +1,84 @@
 const fs = require('fs');
 const readline = require('readline');
 
-// URL dari repositori cahyadsn/wilayah
-const URLS = {
-  provinsi: 'https://raw.githubusercontent.com/cahyadsn/wilayah/master/db/provinsi.csv',
-  kabupaten: 'https://raw.githubusercontent.com/cahyadsn/wilayah/master/db/kabupaten.csv',
-  kecamatan: 'https://raw.githubusercontent.com/cahyadsn/wilayah/master/db/kecamatan.csv',
-  desa: 'https://raw.githubusercontent.com/cahyadsn/wilayah/master/db/desa.csv'
-  // Jika ingin kodepos, bisa dicari source CSV yang tepat dari repository wilayah_kodepos
-};
+// URL dari repositori cahyadsn/wilayah file SQL utama
+const URL_SQL = 'https://raw.githubusercontent.com/cahyadsn/wilayah/master/db/wilayah.sql';
+// URL dari repositori cahyadsn/wilayah_kodepos file SQL utama
+const URL_KODEPOS_SQL = 'https://raw.githubusercontent.com/cahyadsn/wilayah_kodepos/main/db/wilayah_kodepos.sql';
 
 const outputSqlFile = 'sync_updates.sql';
 
-async function fetchCSV(url) {
+async function fetchSQL(url) {
   console.log(`Mengambil data dari ${url}...`);
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Gagal fetch ${url}`);
   const text = await response.text();
-  return text.split('\n').filter(line => line.trim() !== '');
+  return text.split('\n');
+}
+
+function getTipe(kode) {
+  if (kode.length === 2) return 'provinsi';
+  if (kode.length === 5) return 'kabupaten';
+  if (kode.length === 8) return 'kecamatan';
+  if (kode.length === 13) return 'desa';
+  return 'unknown';
 }
 
 async function generateSyncSql() {
   const writeStream = fs.createWriteStream(outputSqlFile);
-  
-  // Tulis header
-  writeStream.write("-- File ini di-generate otomatis untuk sinkronisasi D1\n\n");
+  writeStream.write("-- File ini di-generate otomatis untuk sinkronisasi D1 dari wilayah.sql dan wilayah_kodepos.sql\n\n");
   
   try {
-    for (const [tipe, url] of Object.entries(URLS)) {
-      const lines = await fetchCSV(url);
-      
-      console.log(`Memproses ${lines.length} data ${tipe}...`);
-      writeStream.write(`-- SINKRONISASI ${tipe.toUpperCase()}\n`);
-      
-      let count = 0;
-      for (const line of lines) {
-        // Asumsi format CSV: kode,nama
-        // Contoh baris: 11,ACEH atau 11.01.01,BAKONGAN
-        const parts = line.split(',');
-        if (parts.length < 2) continue;
-        
-        const kode = parts[0];
-        // Gabungkan kembali sisa bagian jika nama mengandung koma
-        const nama = parts.slice(1).join(',').replace(/'/g, "''"); // escape single quotes untuk SQL
+    // 1. SINKRONISASI WILAYAH
+    writeStream.write("-- 1. SINKRONISASI DATA WILAYAH\n");
+    const linesWilayah = await fetchSQL(URL_SQL);
+    console.log(`Memproses ${linesWilayah.length} baris SQL Wilayah...`);
+    
+    let countWilayah = 0;
+    const regexWilayah = /\('([^']+)',\s*'([^']+)'\)/;
 
-        // Logika UPSERT (Khusus SQLite / Cloudflare D1)
-        // Kita asumsikan tabel Anda bernama 'wilayah' dengan kolom 'kode', 'nama', 'tipe'
+    for (const line of linesWilayah) {
+      const match = line.match(regexWilayah);
+      if (match) {
+        const kode = match[1];
+        const nama = match[2].replace(/'/g, "''"); 
+        const tipe = getTipe(kode);
+        
         const sql = `INSERT INTO wilayah (kode, nama, tipe) VALUES ('${kode}', '${nama}', '${tipe}') ` +
                     `ON CONFLICT(kode) DO UPDATE SET nama = excluded.nama;\n`;
         
         writeStream.write(sql);
-        count++;
+        countWilayah++;
       }
-      
-      writeStream.write('\n');
-      console.log(`Berhasil memproses ${count} data ${tipe}.\n`);
     }
+    console.log(`Berhasil memproses ${countWilayah} data wilayah.\n`);
+
+    // 2. SINKRONISASI KODEPOS
+    writeStream.write("\n-- 2. SINKRONISASI DATA KODEPOS\n");
+    const linesKodepos = await fetchSQL(URL_KODEPOS_SQL);
+    console.log(`Memproses ${linesKodepos.length} baris SQL Kodepos...`);
+    
+    let countKodepos = 0;
+    // Format SQL Kodepos: ('11.01.01.2001', '23773')
+    const regexKodepos = /\('([^']+)',\s*'([^']+)'\)/;
+
+    for (const line of linesKodepos) {
+      const match = line.match(regexKodepos);
+      if (match) {
+        const kode = match[1];
+        const kodepos = match[2];
+        
+        // Logika UPDATE untuk menambahkan kodepos ke wilayah yang sudah ada
+        const sql = `UPDATE wilayah SET kodepos = '${kodepos}' WHERE kode = '${kode}';\n`;
+        
+        writeStream.write(sql);
+        countKodepos++;
+      }
+    }
+    console.log(`Berhasil memproses ${countKodepos} data kodepos.\n`);
 
     writeStream.end();
-    console.log(`✅ Selesai! File SQL telah dibuat: ${outputSqlFile}`);
+    console.log(`✅ Selesai! File SQL sinkronisasi telah dibuat: ${outputSqlFile}`);
     console.log(`\nCara menjalankan ke database D1 (lokal):`);
     console.log(`npx wrangler d1 execute wilayah-db --local --file=${outputSqlFile}`);
     console.log(`\nCara menjalankan ke database D1 (production):`);
@@ -70,3 +90,4 @@ async function generateSyncSql() {
 }
 
 generateSyncSql();
+
