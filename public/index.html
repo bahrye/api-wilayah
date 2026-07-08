@@ -649,9 +649,15 @@
             </div>
 
             <div class="result-box">
-                <div class="result-content">
-                    <h4>Kode Wilayah Terpilih</h4>
-                    <p id="result-kode">-</p>
+                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                    <div class="result-content">
+                        <h4>Kode Wilayah Terpilih</h4>
+                        <p id="result-kode">-</p>
+                    </div>
+                    <div class="result-content" id="result-kodepos-container" style="display: none; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 2rem;">
+                        <h4>Kode POS</h4>
+                        <p id="result-kodepos">-</p>
+                    </div>
                 </div>
                 <button class="result-copy-btn" id="btn-copy-result" title="Salin Kode" disabled>
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"
@@ -801,6 +807,8 @@
         const selKecamatan = document.getElementById('kecamatan');
         const selDesa = document.getElementById('desa');
         const txtResult = document.getElementById('result-kode');
+        const txtKodepos = document.getElementById('result-kodepos');
+        const containerKodepos = document.getElementById('result-kodepos-container');
         const btnCopyResult = document.getElementById('btn-copy-result');
 
         // Fetch Stats
@@ -865,6 +873,9 @@
                 const option = document.createElement('option');
                 option.value = item.kode;
                 option.textContent = item.nama;
+                if (item.kodepos) {
+                    option.dataset.kodepos = item.kodepos;
+                }
                 selectElement.appendChild(option);
             });
             selectElement.disabled = false;
@@ -877,13 +888,21 @@
         }
 
         // Set result code
-        function setResultCode(code) {
+        function setResultCode(code, kodepos) {
             if (code) {
                 txtResult.textContent = code;
                 btnCopyResult.disabled = false;
             } else {
                 txtResult.textContent = '-';
                 btnCopyResult.disabled = true;
+            }
+            
+            if (kodepos) {
+                txtKodepos.textContent = kodepos;
+                containerKodepos.style.display = 'block';
+            } else {
+                txtKodepos.textContent = '-';
+                containerKodepos.style.display = 'none';
             }
         }
 
@@ -893,7 +912,7 @@
             resetSelect(selKabupaten, 'Pilih Kabupaten/Kota');
             resetSelect(selKecamatan, 'Pilih Kecamatan');
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
-            setResultCode(kode);
+            setResultCode(kode, null);
 
             if (!kode) return;
 
@@ -912,7 +931,7 @@
             const kode = e.target.value;
             resetSelect(selKecamatan, 'Pilih Kecamatan');
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
-            setResultCode(kode || selProvinsi.value);
+            setResultCode(kode || selProvinsi.value, null);
 
             if (!kode) return;
 
@@ -930,7 +949,7 @@
         selKecamatan.addEventListener('change', async (e) => {
             const kode = e.target.value;
             resetSelect(selDesa, 'Pilih Desa/Kelurahan');
-            setResultCode(kode || selKabupaten.value);
+            setResultCode(kode || selKabupaten.value, null);
 
             if (!kode) return;
 
@@ -946,7 +965,9 @@
         });
 
         selDesa.addEventListener('change', (e) => {
-            setResultCode(e.target.value || selKecamatan.value);
+            const option = e.target.selectedOptions[0];
+            const kodepos = option ? option.dataset.kodepos : null;
+            setResultCode(e.target.value || selKecamatan.value, kodepos);
         });
 
         btnCopyResult.addEventListener('click', () => {
