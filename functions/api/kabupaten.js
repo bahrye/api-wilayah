@@ -2,8 +2,8 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const provinsi = url.searchParams.get("provinsi");
   
-  if (!provinsi) {
-    return new Response(JSON.stringify({ error: "Parameter 'provinsi' tidak disertakan" }), { status: 400 });
+  if (!provinsi || provinsi.length !== 2) {
+    return new Response(JSON.stringify({ error: "Parameter 'provinsi' tidak valid. Harus berupa kode 2 karakter (xx)" }), { status: 400 });
   }
 
   try {

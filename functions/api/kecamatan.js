@@ -2,8 +2,8 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kabupaten = url.searchParams.get("kabupaten");
   
-  if (!kabupaten) {
-    return new Response(JSON.stringify({ error: "Parameter 'kabupaten' tidak disertakan" }), { status: 400 });
+  if (!kabupaten || kabupaten.length !== 5) {
+    return new Response(JSON.stringify({ error: "Parameter 'kabupaten' tidak valid. Harus berupa kode 5 karakter (xx.xx)" }), { status: 400 });
   }
 
   try {
