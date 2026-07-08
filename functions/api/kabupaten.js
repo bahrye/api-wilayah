@@ -7,8 +7,14 @@ export async function onRequest({ request, env }) {
   }
 
   try {
-    // Kabupaten memiliki panjang kode 5 digit (xx.xx) dan berawalan kode provinsi
-    const query = "SELECT kode, nama, tipe FROM wilayah WHERE length(kode) = 5 AND kode LIKE ?";
+    const query = `
+      SELECT 
+        p.nama as nama_provinsi,
+        k.kode, k.nama, k.tipe
+      FROM wilayah k
+      LEFT JOIN wilayah p ON p.kode = substr(k.kode, 1, 2)
+      WHERE length(k.kode) = 5 AND k.kode LIKE ?
+    `;
     const { results } = await env.DB.prepare(query).bind(`${provinsi}.%`).all();
     
     return new Response(JSON.stringify(results));

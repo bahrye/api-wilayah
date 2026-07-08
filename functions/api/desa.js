@@ -7,8 +7,18 @@ export async function onRequest({ request, env }) {
   }
 
   try {
-    // Desa/Kelurahan memiliki panjang kode 13 digit (xx.xx.xx.xxxx) dan berawalan kode kecamatan
-    const query = "SELECT * FROM wilayah WHERE length(kode) = 13 AND kode LIKE ?";
+    const query = `
+      SELECT 
+        p.nama as nama_provinsi,
+        kab.nama as nama_kabupaten,
+        kec.nama as nama_kecamatan,
+        d.kode, d.nama, d.tipe, d.kodepos
+      FROM wilayah d
+      LEFT JOIN wilayah p ON p.kode = substr(d.kode, 1, 2)
+      LEFT JOIN wilayah kab ON kab.kode = substr(d.kode, 1, 5)
+      LEFT JOIN wilayah kec ON kec.kode = substr(d.kode, 1, 8)
+      WHERE length(d.kode) = 13 AND d.kode LIKE ?
+    `;
     const { results } = await env.DB.prepare(query).bind(`${kecamatan}.%`).all();
     
     return new Response(JSON.stringify(results));

@@ -7,8 +7,16 @@ export async function onRequest({ request, env }) {
   }
 
   try {
-    // Kecamatan memiliki panjang kode 8 digit (xx.xx.xx) dan berawalan kode kabupaten
-    const query = "SELECT kode, nama, tipe FROM wilayah WHERE length(kode) = 8 AND kode LIKE ?";
+    const query = `
+      SELECT 
+        p.nama as nama_provinsi,
+        kab.nama as nama_kabupaten,
+        k.kode, k.nama, k.tipe
+      FROM wilayah k
+      LEFT JOIN wilayah p ON p.kode = substr(k.kode, 1, 2)
+      LEFT JOIN wilayah kab ON kab.kode = substr(k.kode, 1, 5)
+      WHERE length(k.kode) = 8 AND k.kode LIKE ?
+    `;
     const { results } = await env.DB.prepare(query).bind(`${kabupaten}.%`).all();
     
     return new Response(JSON.stringify(results));
