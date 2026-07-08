@@ -13,7 +13,12 @@ export async function onRequest({ request, env }) {
       return new Response(JSON.stringify({ error: "Detail wilayah tidak ditemukan" }), { status: 404 });
     }
 
-    return new Response(JSON.stringify(results[0]));
+    const data = results[0];
+    if (data.tipe !== 'DESA' && data.tipe !== 'KELURAHAN') {
+      delete data.kodepos;
+    }
+
+    return new Response(JSON.stringify(data));
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500 });
   }

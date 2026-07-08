@@ -8,7 +8,7 @@ export async function onRequest({ request, env }) {
 
   try {
     // Kecamatan memiliki panjang kode 8 digit (xx.xx.xx) dan berawalan kode kabupaten
-    const query = "SELECT * FROM wilayah WHERE length(kode) = 8 AND kode LIKE ?";
+    const query = "SELECT kode, nama, tipe FROM wilayah WHERE length(kode) = 8 AND kode LIKE ?";
     const { results } = await env.DB.prepare(query).bind(`${kabupaten}.%`).all();
     
     return new Response(JSON.stringify(results));
