@@ -621,6 +621,70 @@
       border-left: 1px solid rgba(255, 255, 255, 0.2);
       padding-left: 2rem;
     }
+
+    /* Table Rekapitulasi Styling */
+    .rekap-section {
+      margin-bottom: 3rem;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      padding: 0.5rem;
+    }
+
+    .rekap-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+      min-width: 750px;
+    }
+
+    .rekap-table th, 
+    .rekap-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .rekap-table th {
+      font-weight: 600;
+      color: var(--text-main);
+      background: rgba(0, 0, 0, 0.01);
+      border-bottom: 2px solid var(--card-border);
+    }
+
+    .rekap-table tbody tr {
+      transition: background-color 0.2s ease;
+    }
+
+    .rekap-table tbody tr:hover {
+      background-color: rgba(239, 68, 68, 0.03);
+    }
+
+    .rekap-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rekap-table tfoot tr {
+      background: rgba(0, 0, 0, 0.02);
+      font-weight: 700;
+      color: var(--text-main);
+      border-top: 2px solid var(--card-border);
+    }
+
+    .rekap-table tfoot td {
+      border-bottom: none;
+    }
+
+    .rekap-table .num-col {
+      text-align: right;
+    }
   </style>
 </head>
 
@@ -757,6 +821,48 @@
         </div>
         <div id="kodepos-search-result"
           style="display: none; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--card-border); padding: 1.5rem; margin-top: 1rem; max-height: 300px; overflow-y: auto;">
+        </div>
+      </section>
+
+      <section class="demo-section rekap-section">
+        <div class="demo-header">
+          <h2>Rekapitulasi Data Wilayah</h2>
+          <p>
+            Jumlah pembagian wilayah administrasi Indonesia per provinsi (Provinsi, Kabupaten, Kota, Kecamatan, Kelurahan, Desa) beserta total keseluruhan.
+          </p>
+        </div>
+        <div class="table-responsive">
+          <table class="rekap-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">No</th>
+                <th style="width: 80px;">Kode</th>
+                <th>Provinsi</th>
+                <th class="num-col">Kabupaten</th>
+                <th class="num-col">Kota</th>
+                <th class="num-col">Kecamatan</th>
+                <th class="num-col">Kelurahan</th>
+                <th class="num-col">Desa</th>
+              </tr>
+            </thead>
+            <tbody id="rekap-tbody">
+              <tr>
+                <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                  Memuat data rekapitulasi...
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr id="rekap-tfoot">
+                <td colspan="3" style="text-align: right; padding: 0.75rem 1rem;">TOTAL</td>
+                <td class="num-col" style="padding: 0.75rem 1rem;">-</td>
+                <td class="num-col" style="padding: 0.75rem 1rem;">-</td>
+                <td class="num-col" style="padding: 0.75rem 1rem;">-</td>
+                <td class="num-col" style="padding: 0.75rem 1rem;">-</td>
+                <td class="num-col" style="padding: 0.75rem 1rem;">-</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </section>
 
@@ -1095,10 +1201,69 @@
       }
     });
 
+    // Fetch Rekapitulasi Data Wilayah
+    async function fetchRekapitulasi() {
+      const tbody = document.getElementById("rekap-tbody");
+      const tfoot = document.getElementById("rekap-tfoot");
+      try {
+        const res = await fetch("/api/rekapitulasi");
+        const data = await res.json();
+
+        if (data.error) {
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--primary); padding: 2rem;">Gagal memuat data: ${data.error}</td></tr>`;
+          return;
+        }
+
+        let html = "";
+        let totalKab = 0;
+        let totalKota = 0;
+        let totalKec = 0;
+        let totalKel = 0;
+        let totalDesa = 0;
+
+        data.forEach((item, index) => {
+          totalKab += item.kabupaten;
+          totalKota += item.kota;
+          totalKec += item.kecamatan;
+          totalKel += item.kelurahan;
+          totalDesa += item.desa;
+
+          html += `
+            <tr>
+              <td>${index + 1}</td>
+              <td style="font-family: 'Fira Code', monospace; font-size: 0.8rem;">${item.provinsi_kode}</td>
+              <td style="font-weight: 600; color: var(--text-main);">${item.provinsi_nama}</td>
+              <td class="num-col">${item.kabupaten.toLocaleString("id-ID")}</td>
+              <td class="num-col">${item.kota.toLocaleString("id-ID")}</td>
+              <td class="num-col">${item.kecamatan.toLocaleString("id-ID")}</td>
+              <td class="num-col">${item.kelurahan.toLocaleString("id-ID")}</td>
+              <td class="num-col">${item.desa.toLocaleString("id-ID")}</td>
+            </tr>
+          `;
+        });
+
+        tbody.innerHTML = html;
+
+        // Render Total Row in tfoot
+        tfoot.innerHTML = `
+          <td colspan="3" style="text-align: right; padding: 0.75rem 1rem;">TOTAL</td>
+          <td class="num-col" style="padding: 0.75rem 1rem;">${totalKab.toLocaleString("id-ID")}</td>
+          <td class="num-col" style="padding: 0.75rem 1rem;">${totalKota.toLocaleString("id-ID")}</td>
+          <td class="num-col" style="padding: 0.75rem 1rem;">${totalKec.toLocaleString("id-ID")}</td>
+          <td class="num-col" style="padding: 0.75rem 1rem;">${totalKel.toLocaleString("id-ID")}</td>
+          <td class="num-col" style="padding: 0.75rem 1rem;">${totalDesa.toLocaleString("id-ID")}</td>
+        `;
+      } catch (err) {
+        console.error("Gagal memuat rekapitulasi", err);
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--primary); padding: 2rem;">Gagal menghubungkan ke server.</td></tr>`;
+      }
+    }
+
     // Initialize Demo & Stats
     document.addEventListener("DOMContentLoaded", () => {
       fetchStats();
       fetchProvinsi();
+      fetchRekapitulasi();
     });
 
     // Search Kodepos Logic
