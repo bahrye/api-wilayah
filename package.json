@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "API Wilayah Indonesia menggunakan Cloudflare Pages",
   "scripts": {
-    "deploy": "npx wrangler pages deploy public --project-name api-wilayah-indo --branch production"
+    "deploy": "npx wrangler pages deploy public --project-name api-wilayah-indo --branch production",
+    "sync:supabase": "node sync_supabase.js --direct",
+    "sync:sql": "node sync_supabase.js --sql"
   },
   "author": "Syamsul Bahri",
   "license": "MIT",
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
+    "dotenv": "^17.4.2",
     "xlsx": "^0.18.5"
   }
 }

@@ -1,3 +1,5 @@
+import { getSupabase } from '../_supabase.js';
+
 export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kode = url.searchParams.get("kode");
@@ -7,25 +9,18 @@ export async function onRequest({ request, env }) {
   }
 
   try {
-    const query = `
-      SELECT 
-        p.nama as nama_provinsi,
-        kab.nama as nama_kabupaten,
-        kec.nama as nama_kecamatan,
-        w.kode, w.nama, w.tipe, w.kodepos
-      FROM wilayah w
-      LEFT JOIN wilayah p ON p.kode = substr(w.kode, 1, 2) AND length(w.kode) > 2
-      LEFT JOIN wilayah kab ON kab.kode = substr(w.kode, 1, 5) AND length(w.kode) > 5
-      LEFT JOIN wilayah kec ON kec.kode = substr(w.kode, 1, 8) AND length(w.kode) > 8
-      WHERE w.kode = ?
-    `;
-    const { results } = await env.DB.prepare(query).bind(kode).all();
-    
-    if (results.length === 0) {
+    const supabase = getSupabase(env);
+    const { data, error } = await supabase
+      .from('v_detail')
+      .select('*')
+      .eq('kode', kode)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (!data) {
       return new Response(JSON.stringify({ error: "Detail wilayah tidak ditemukan" }), { status: 404 });
     }
 
-    const data = results[0];
     if (data.tipe !== 'DESA' && data.tipe !== 'KELURAHAN') {
       delete data.kodepos;
     }

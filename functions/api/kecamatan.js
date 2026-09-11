@@ -1,3 +1,5 @@
+import { getSupabase } from '../_supabase.js';
+
 export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kabupaten = url.searchParams.get("kabupaten");
@@ -7,19 +9,14 @@ export async function onRequest({ request, env }) {
   }
 
   try {
-    const query = `
-      SELECT 
-        p.nama as nama_provinsi,
-        kab.nama as nama_kabupaten,
-        k.kode, k.nama, k.tipe
-      FROM wilayah k
-      LEFT JOIN wilayah p ON p.kode = substr(k.kode, 1, 2)
-      LEFT JOIN wilayah kab ON kab.kode = substr(k.kode, 1, 5)
-      WHERE length(k.kode) = 8 AND k.kode LIKE ?
-    `;
-    const { results } = await env.DB.prepare(query).bind(`${kabupaten}.%`).all();
-    
-    return new Response(JSON.stringify(results));
+    const supabase = getSupabase(env);
+    const { data, error } = await supabase
+      .from('v_kecamatan')
+      .select('nama_provinsi, nama_kabupaten, kode, nama, tipe')
+      .like('kode', `${kabupaten}.%`);
+
+    if (error) throw error;
+    return new Response(JSON.stringify(data));
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500 });
   }

@@ -5,3 +5,8 @@ output_kv/
 .DS_Store
 package-lock.json
 *.xlsx
+.env
+.env.*
+.dev.vars
+sync_updates.sql
+seed_wilayah.sql

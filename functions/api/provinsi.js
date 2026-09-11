@@ -1,8 +1,14 @@
+import { getSupabase } from '../_supabase.js';
+
 export async function onRequest({ env }) {
   try {
-    // Di format Kemendagri, provinsi memiliki panjang kode 2 digit
-    const { results } = await env.DB.prepare("SELECT kode, nama, tipe FROM wilayah WHERE length(kode) = 2").all();
-    return new Response(JSON.stringify(results));
+    const supabase = getSupabase(env);
+    const { data, error } = await supabase
+      .from('v_provinsi')
+      .select('kode, nama, tipe');
+
+    if (error) throw error;
+    return new Response(JSON.stringify(data));
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500 });
   }

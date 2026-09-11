@@ -1,8 +1,14 @@
+import { getSupabase } from '../_supabase.js';
+
 export async function onRequest({ env }) {
   try {
-    const query = "SELECT length(kode) as len, tipe, count(*) as count FROM wilayah GROUP BY length(kode), tipe";
-    const { results } = await env.DB.prepare(query).all();
-    
+    const supabase = getSupabase(env);
+    const { data, error } = await supabase
+      .from('v_stats')
+      .select('len, tipe, count');
+
+    if (error) throw error;
+
     const stats = {
       provinsi: 0,
       kab_kota: 0,
@@ -17,21 +23,29 @@ export async function onRequest({ env }) {
         KELURAHAN: 0
       }
     };
-    
-    for (const row of results) {
-      if (row.len === 2) {
-        stats.provinsi += row.count;
-      } else if (row.len === 5) {
-        stats.kab_kota += row.count;
-        if (row.tipe) stats.kab_kota_split[row.tipe] = row.count;
-      } else if (row.len === 8) {
-        stats.kecamatan += row.count;
-      } else if (row.len === 13) {
-        stats.desa_kel += row.count;
-        if (row.tipe) stats.desa_kel_split[row.tipe] = row.count;
+
+    for (const row of data || []) {
+      const len = Number(row.len);
+      const count = Number(row.count);
+      const tipe = (row.tipe || '').toUpperCase();
+
+      if (len === 2) {
+        stats.provinsi += count;
+      } else if (len === 5) {
+        stats.kab_kota += count;
+        if (tipe && stats.kab_kota_split[tipe] !== undefined) {
+          stats.kab_kota_split[tipe] += count;
+        }
+      } else if (len === 8) {
+        stats.kecamatan += count;
+      } else if (len === 13) {
+        stats.desa_kel += count;
+        if (tipe && stats.desa_kel_split[tipe] !== undefined) {
+          stats.desa_kel_split[tipe] += count;
+        }
       }
     }
-    
+
     return new Response(JSON.stringify(stats), {
       headers: {
         "Content-Type": "application/json",
