@@ -33,7 +33,25 @@ https://api-wilayah-indo.pages.dev
 
 ---
 
-## 📖 Endpoint Dokumentasi
+## 🚀 Endpoint Data Statis (JSON CDN - Gratis & Unlimited)
+
+> [!TIP]
+> **Rekomendasi Utama untuk Aplikasi & Frontend**: Seluruh data administratif wilayah dan kode pos kini tersedia dalam format berkas statis JSON yang di-cache di Cloudflare Global CDN (`Cache-Control: public, max-age=86400, s-maxage=604800` dan `Access-Control-Allow-Origin: *`). Mengakses endpoint ini **100% gratis, super cepat (< 20ms), dan tidak memakan kuota Worker (0 Worker Invocations)**.
+
+| Kategori Wilayah | Endpoint Statis | Keterangan & Contoh |
+| :--- | :--- | :--- |
+| **Provinsi** | `GET /data/provinsi.json` | Seluruh 38 Provinsi Indonesia |
+| **Kabupaten (Semua)** | `GET /data/kabupaten.json` | Seluruh 514 Kabupaten & Kota se-Indonesia |
+| **Kabupaten per Provinsi** | `GET /data/kabupaten/{kode_prov}.json` | Contoh: `/data/kabupaten/32.json` (Jawa Barat) |
+| **Kecamatan per Provinsi** | `GET /data/kecamatan/{kode_prov}.json` | Contoh: `/data/kecamatan/32.json` |
+| **Desa per Kab/Kota** | `GET /data/desa/{kode_kab}.json` | Contoh: `/data/desa/32.73.json` (Kota Bandung) |
+| **Kode Pos** | `GET /data/kodepos/{3_digit_awalan}.json` | Contoh: `/data/kodepos/161.json` (semua pos `161xx`) |
+| **Rekapitulasi Lengkap** | `GET /data/rekapitulasi.json` | Rekapitulasi jumlah pembagian wilayah |
+| **Statistik Wilayah** | `GET /data/stats.json` | Total jumlah provinsi, kab, kota, kec, desa |
+
+---
+
+## 📖 Endpoint RESTful API (Dynamic)
 
 ### 1. Get Semua Provinsi
 Mendapatkan daftar seluruh provinsi di Indonesia.

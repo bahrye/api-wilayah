@@ -871,7 +871,121 @@
             </tfoot>
           </table>
         </div>
+      <!-- Section Dokumentasi Endpoint Data Statis (CDN) -->
+      <section class="demo-section" style="border-left: 4px solid #3b82f6;">
+        <div class="demo-header" style="text-align: left; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <h2 style="font-size: 1.35rem; margin-bottom: 0;">🚀 Endpoint Data Statis JSON (CDN Gratis &amp; Unlimited)</h2>
+            <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">0 Worker Invocations</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Data statis dalam format JSON yang di-hosting langsung di Cloudflare Global CDN dengan header <code>Cache-Control</code> dan <code>Access-Control-Allow-Origin: *</code>. Sangat cepat (&lt; 20ms), gratis tanpa batas kuota request harian, dan sangat ideal untuk frontend web/mobile, dropdown bertingkat, serta pencarian offline.
+          </p>
+        </div>
+
+        <div class="endpoints-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 0;">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Semua Provinsi</h3>
+                <p>38 provinsi seluruh Indonesia</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/provinsi.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/provinsi.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Semua Kabupaten/Kota</h3>
+                <p>514 kabupaten &amp; kota se-Indonesia</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/kabupaten.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/kabupaten.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Kabupaten per Provinsi</h3>
+                <p>Filter berdasarkan kode provinsi (misal: 32)</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/kabupaten/32.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/kabupaten/32.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Kecamatan per Provinsi</h3>
+                <p>Seluruh kecamatan di provinsi (misal: 32)</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/kecamatan/32.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/kecamatan/32.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Desa per Kab/Kota</h3>
+                <p>Daftar desa per kabupaten (misal: 32.73)</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/desa/32.73.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/desa/32.73.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-info">
+                <h3>Kode Pos (Awalan 3-Digit)</h3>
+                <p>Data pos berdasarkan 3 digit depan (misal: 161)</p>
+              </div>
+              <span class="method" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;">JSON</span>
+            </div>
+            <div class="code-container">
+              <code>/data/kodepos/161.json</code>
+              <button class="copy-btn" onclick="copyUrl('/data/kodepos/161.json', this)" title="Salin URL">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <div style="margin-top: 2rem; margin-bottom: 1rem; text-align: center;">
+        <h2 style="font-size: 1.35rem; color: var(--text-main);">⚡ RESTful API Endpoints (Dynamic)</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Endpoint dinamis untuk query pencarian spesifik menggunakan Cloudflare Functions.</p>
+      </div>
 
       <main class="endpoints-grid">
         <!-- Provinsi -->
@@ -1201,6 +1315,9 @@
       }
     }
 
+    let currentProvinsiKecamatan = [];
+    let currentKabupatenDesa = [];
+
     // Event Listeners (dengan LocalStorage Caching per Kode Wilayah)
     selProvinsi.addEventListener("change", async (e) => {
       const kode = e.target.value;
@@ -1208,35 +1325,52 @@
       resetSelect(selKecamatan, "Pilih Kecamatan");
       resetSelect(selDesa, "Pilih Desa/Kelurahan");
       setResultCode(kode, null);
+      currentProvinsiKecamatan = [];
+      currentKabupatenDesa = [];
 
       if (!kode) return;
 
+      // 1. Muat Kabupaten (LocalStorage -> CDN Statis -> API Fallback)
       const cacheKey = "kab_" + kode;
       const cached = getCachedData(cacheKey);
       if (cached) {
         populateSelect(selKabupaten, cached, "Pilih Kabupaten/Kota");
-        return;
-      }
-
-      selKabupaten.innerHTML = '<option value="">Memuat...</option>';
-      try {
-        let data = null;
+      } else {
+        selKabupaten.innerHTML = '<option value="">Memuat...</option>';
         try {
-          const staticRes = await fetch(`/data/kabupaten/${kode}.json`);
-          if (staticRes.ok) data = await staticRes.json();
-        } catch (e) {}
+          let data = null;
+          try {
+            const staticRes = await fetch(`/data/kabupaten/${kode}.json`);
+            if (staticRes.ok) data = await staticRes.json();
+          } catch (e) {}
 
-        if (!data) {
-          const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
-          data = await res.json();
+          if (!data) {
+            const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
+            data = await res.json();
+          }
+
+          if (Array.isArray(data)) setCachedData(cacheKey, data);
+          populateSelect(selKabupaten, data, "Pilih Kabupaten/Kota");
+        } catch (err) {
+          console.error(err);
+          resetSelect(selKabupaten, "Gagal memuat data");
         }
-
-        if (Array.isArray(data)) setCachedData(cacheKey, data);
-        populateSelect(selKabupaten, data, "Pilih Kabupaten/Kota");
-      } catch (err) {
-        console.error(err);
-        resetSelect(selKabupaten, "Gagal memuat data");
       }
+
+      // 2. Pre-fetch seluruh data Kecamatan provinsi ini (0 Worker Invocation)
+      try {
+        const cacheKeyKec = "kec_prov_" + kode;
+        const cachedKec = getCachedData(cacheKeyKec);
+        if (cachedKec) {
+          currentProvinsiKecamatan = cachedKec;
+        } else {
+          const resKec = await fetch(`/data/kecamatan/${kode}.json`);
+          if (resKec.ok) {
+            currentProvinsiKecamatan = await resKec.json();
+            setCachedData(cacheKeyKec, currentProvinsiKecamatan);
+          }
+        }
+      } catch (e) {}
     });
 
     selKabupaten.addEventListener("change", async (e) => {
@@ -1244,26 +1378,43 @@
       resetSelect(selKecamatan, "Pilih Kecamatan");
       resetSelect(selDesa, "Pilih Desa/Kelurahan");
       setResultCode(kode || selProvinsi.value, null);
+      currentKabupatenDesa = [];
 
       if (!kode) return;
 
-      const cacheKey = "kec_" + kode;
-      const cached = getCachedData(cacheKey);
-      if (cached) {
-        populateSelect(selKecamatan, cached, "Pilih Kecamatan");
-        return;
+      // 1. Filter langsung dari data kecamatan provinsi yang sudah ada (0 milidetik!)
+      if (currentProvinsiKecamatan && currentProvinsiKecamatan.length > 0) {
+        const filtered = currentProvinsiKecamatan.filter(k => k.kabupaten_kode === kode);
+        if (filtered.length > 0) {
+          populateSelect(selKecamatan, filtered, "Pilih Kecamatan");
+        }
+      } else {
+        // Fallback jika belum ter-fetch
+        selKecamatan.innerHTML = '<option value="">Memuat...</option>';
+        try {
+          const res = await fetch(`/api/kecamatan?kabupaten=${kode}`);
+          const data = await res.json();
+          populateSelect(selKecamatan, data, "Pilih Kecamatan");
+        } catch (err) {
+          console.error(err);
+          resetSelect(selKecamatan, "Gagal memuat data");
+        }
       }
 
-      selKecamatan.innerHTML = '<option value="">Memuat...</option>';
+      // 2. Pre-fetch seluruh data desa kabupaten ini (~15 KB, 0 Worker Invocation!)
       try {
-        const res = await fetch(`/api/kecamatan?kabupaten=${kode}`);
-        const data = await res.json();
-        if (Array.isArray(data)) setCachedData(cacheKey, data);
-        populateSelect(selKecamatan, data, "Pilih Kecamatan");
-      } catch (err) {
-        console.error(err);
-        resetSelect(selKecamatan, "Gagal memuat data");
-      }
+        const cacheKeyDesa = "desa_kab_" + kode;
+        const cachedDesa = getCachedData(cacheKeyDesa);
+        if (cachedDesa) {
+          currentKabupatenDesa = cachedDesa;
+        } else {
+          const resDesa = await fetch(`/data/desa/${kode}.json`);
+          if (resDesa.ok) {
+            currentKabupatenDesa = await resDesa.json();
+            setCachedData(cacheKeyDesa, currentKabupatenDesa);
+          }
+        }
+      } catch (e) {}
     });
 
     selKecamatan.addEventListener("change", async (e) => {
@@ -1273,18 +1424,20 @@
 
       if (!kode) return;
 
-      const cacheKey = "desa_" + kode;
-      const cached = getCachedData(cacheKey);
-      if (cached) {
-        populateSelect(selDesa, cached, "Pilih Desa/Kelurahan");
-        return;
+      // Filter langsung dari data desa kabupaten yang sudah di-cache (0 milidetik!)
+      if (currentKabupatenDesa && currentKabupatenDesa.length > 0) {
+        const filtered = currentKabupatenDesa.filter(d => d.kecamatan_kode === kode);
+        if (filtered.length > 0) {
+          populateSelect(selDesa, filtered, "Pilih Desa/Kelurahan");
+          return;
+        }
       }
 
+      // Fallback jika belum ter-fetch
       selDesa.innerHTML = '<option value="">Memuat...</option>';
       try {
         const res = await fetch(`/api/desa?kecamatan=${kode}`);
         const data = await res.json();
-        if (Array.isArray(data)) setCachedData(cacheKey, data);
         populateSelect(selDesa, data, "Pilih Desa/Kelurahan");
       } catch (err) {
         console.error(err);
@@ -1417,7 +1570,7 @@
       }
     }
 
-    // Search Kodepos Logic (dengan LocalStorage Caching)
+    // Search Kodepos Logic (LocalStorage -> CDN Statis Prefix -> API Fallback)
     const inputKodeposSearch = document.getElementById("input-kodepos-search");
     const btnSearchKodepos = document.getElementById("btn-search-kodepos");
     const kodeposSearchResult = document.getElementById("kodepos-search-result");
@@ -1441,15 +1594,37 @@
       kodeposSearchResult.innerHTML = "<p style='text-align:center; color:var(--text-muted);'>Mencari data...</p>";
 
       try {
-        const res = await fetch(`/api/kodepos?kodepos=${kodepos}`);
-        if (!res.ok) {
-          const data = await res.json();
-          kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">${data.error || 'Terjadi kesalahan'}</p>`;
-        } else {
-          const data = await res.json();
-          setCachedData(cacheKey, data);
-          renderKodeposResults(data, kodepos);
+        let results = null;
+
+        // 2. Cari dari data statis kodepos CDN berdasarkan 3 digit awalan (0 Worker Invocations!)
+        if (kodepos.length === 5 && /^\d{5}$/.test(kodepos)) {
+          const prefix3 = kodepos.slice(0, 3);
+          try {
+            const staticRes = await fetch(`/data/kodepos/${prefix3}.json`);
+            if (staticRes.ok) {
+              const group = await staticRes.json();
+              if (group && group[kodepos]) {
+                results = group[kodepos];
+              } else {
+                results = [];
+              }
+            }
+          } catch (e) {}
         }
+
+        // 3. Fallback ke endpoint API jika statis gagal
+        if (results === null) {
+          const res = await fetch(`/api/kodepos?kodepos=${kodepos}`);
+          if (!res.ok) {
+            const errData = await res.json();
+            kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">${errData.error || 'Terjadi kesalahan'}</p>`;
+            return;
+          }
+          results = await res.json();
+        }
+
+        setCachedData(cacheKey, results);
+        renderKodeposResults(results, kodepos);
       } catch (err) {
         kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">Gagal mengambil data</p>`;
       } finally {

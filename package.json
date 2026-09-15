@@ -5,7 +5,8 @@
   "scripts": {
     "deploy": "npx wrangler pages deploy public --project-name api-wilayah-indo --branch production --commit-dirty=true",
     "sync:supabase": "node sync_supabase.js --direct",
-    "sync:sql": "node sync_supabase.js --sql"
+    "sync:sql": "node sync_supabase.js --sql",
+    "generate:static": "node generate_static_data.js"
   },
   "author": "Syamsul Bahri",
   "license": "MIT",
