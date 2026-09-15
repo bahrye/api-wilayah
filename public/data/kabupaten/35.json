@@ -1,0 +1,230 @@
+[
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.01",
+    "nama": "Kabupaten Pacitan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.02",
+    "nama": "Kabupaten Ponorogo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.03",
+    "nama": "Kabupaten Trenggalek",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.04",
+    "nama": "Kabupaten Tulungagung",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.05",
+    "nama": "Kabupaten Blitar",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.06",
+    "nama": "Kabupaten Kediri",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.07",
+    "nama": "Kabupaten Malang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.08",
+    "nama": "Kabupaten Lumajang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.09",
+    "nama": "Kabupaten Jember",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.10",
+    "nama": "Kabupaten Banyuwangi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.11",
+    "nama": "Kabupaten Bondowoso",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.12",
+    "nama": "Kabupaten Situbondo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.13",
+    "nama": "Kabupaten Probolinggo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.14",
+    "nama": "Kabupaten Pasuruan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.15",
+    "nama": "Kabupaten Sidoarjo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.16",
+    "nama": "Kabupaten Mojokerto",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.17",
+    "nama": "Kabupaten Jombang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.18",
+    "nama": "Kabupaten Nganjuk",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.19",
+    "nama": "Kabupaten Madiun",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.20",
+    "nama": "Kabupaten Magetan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.21",
+    "nama": "Kabupaten Ngawi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.22",
+    "nama": "Kabupaten Bojonegoro",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.23",
+    "nama": "Kabupaten Tuban",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.24",
+    "nama": "Kabupaten Lamongan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.25",
+    "nama": "Kabupaten Gresik",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.26",
+    "nama": "Kabupaten Bangkalan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.27",
+    "nama": "Kabupaten Sampang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.28",
+    "nama": "Kabupaten Pamekasan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.29",
+    "nama": "Kabupaten Sumenep",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.71",
+    "nama": "Kota Kediri",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.72",
+    "nama": "Kota Blitar",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.73",
+    "nama": "Kota Malang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.74",
+    "nama": "Kota Probolinggo",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.75",
+    "nama": "Kota Pasuruan",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.76",
+    "nama": "Kota Mojokerto",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.77",
+    "nama": "Kota Madiun",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.78",
+    "nama": "Kota Surabaya",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Timur",
+    "kode": "35.79",
+    "nama": "Kota Batu",
+    "tipe": "KOTA"
+  }
+]

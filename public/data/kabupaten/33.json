@@ -1,0 +1,212 @@
+[
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.01",
+    "nama": "Kabupaten Cilacap",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.02",
+    "nama": "Kabupaten Banyumas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.03",
+    "nama": "Kabupaten Purbalingga",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.04",
+    "nama": "Kabupaten Banjarnegara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.05",
+    "nama": "Kabupaten Kebumen",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.06",
+    "nama": "Kabupaten Purworejo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.07",
+    "nama": "Kabupaten Wonosobo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.08",
+    "nama": "Kabupaten Magelang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.09",
+    "nama": "Kabupaten Boyolali",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.10",
+    "nama": "Kabupaten Klaten",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.11",
+    "nama": "Kabupaten Sukoharjo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.12",
+    "nama": "Kabupaten Wonogiri",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.13",
+    "nama": "Kabupaten Karanganyar",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.14",
+    "nama": "Kabupaten Sragen",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.15",
+    "nama": "Kabupaten Grobogan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.16",
+    "nama": "Kabupaten Blora",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.17",
+    "nama": "Kabupaten Rembang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.18",
+    "nama": "Kabupaten Pati",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.19",
+    "nama": "Kabupaten Kudus",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.20",
+    "nama": "Kabupaten Jepara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.21",
+    "nama": "Kabupaten Demak",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.22",
+    "nama": "Kabupaten Semarang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.23",
+    "nama": "Kabupaten Temanggung",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.24",
+    "nama": "Kabupaten Kendal",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.25",
+    "nama": "Kabupaten Batang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.26",
+    "nama": "Kabupaten Pekalongan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.27",
+    "nama": "Kabupaten Pemalang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.28",
+    "nama": "Kabupaten Tegal",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.29",
+    "nama": "Kabupaten Brebes",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.71",
+    "nama": "Kota Magelang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.72",
+    "nama": "Kota Surakarta",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.73",
+    "nama": "Kota Salatiga",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.74",
+    "nama": "Kota Semarang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.75",
+    "nama": "Kota Pekalongan",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jawa Tengah",
+    "kode": "33.76",
+    "nama": "Kota Tegal",
+    "tipe": "KOTA"
+  }
+]

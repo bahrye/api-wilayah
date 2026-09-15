@@ -1,0 +1,56 @@
+[
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.03",
+    "nama": "Kabupaten Jayapura",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.05",
+    "nama": "Kabupaten Kepulauan Yapen",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.06",
+    "nama": "Kabupaten Biak Numfor",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.10",
+    "nama": "Kabupaten Sarmi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.11",
+    "nama": "Kabupaten Keerom",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.15",
+    "nama": "Kabupaten Waropen",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.19",
+    "nama": "Kabupaten Supiori",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.20",
+    "nama": "Kabupaten Mamberamo Raya",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua",
+    "kode": "91.71",
+    "nama": "Kota Jayapura",
+    "tipe": "KOTA"
+  }
+]

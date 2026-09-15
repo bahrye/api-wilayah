@@ -1,0 +1,74 @@
+[
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.01",
+    "nama": "Kabupaten Kampar",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.02",
+    "nama": "Kabupaten Indragiri Hulu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.03",
+    "nama": "Kabupaten Bengkalis",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.04",
+    "nama": "Kabupaten Indragiri Hilir",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.05",
+    "nama": "Kabupaten Pelalawan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.06",
+    "nama": "Kabupaten Rokan Hulu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.07",
+    "nama": "Kabupaten Rokan Hilir",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.08",
+    "nama": "Kabupaten Siak",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.09",
+    "nama": "Kabupaten Kuantan Singingi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.10",
+    "nama": "Kabupaten Kepulauan Meranti",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.71",
+    "nama": "Kota Pekanbaru",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Riau",
+    "kode": "14.72",
+    "nama": "Kota Dumai",
+    "tipe": "KOTA"
+  }
+]

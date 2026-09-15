@@ -1,0 +1,38 @@
+[
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.01",
+    "nama": "Kabupaten Administrasi Kepulauan Seribu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.71",
+    "nama": "Kota Administrasi Jakarta Pusat",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.72",
+    "nama": "Kota Administrasi Jakarta Utara",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.73",
+    "nama": "Kota Administrasi Jakarta Barat",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.74",
+    "nama": "Kota Administrasi Jakarta Selatan",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Daerah Khusus Ibukota Jakarta",
+    "kode": "31.75",
+    "nama": "Kota Administrasi Jakarta Timur",
+    "tipe": "KOTA"
+  }
+]

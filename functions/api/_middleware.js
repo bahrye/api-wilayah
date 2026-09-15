@@ -1,6 +1,12 @@
 // Daftar bot scraper dan crawler AI agresif yang dilarang merayapi API
 const BLOCKED_BOT_REGEX = /bytespider|gptbot|chatgpt-user|claudebot|petalbot|semrushbot|ahrefsbot|dotbot|mj12bot|ccbot|amazonbot|dataforseobot|seekport/i;
 
+// Rate Limiter Sederhana di Memori Worker (Anti-Spam / Anti-Scraper)
+// Membatasi maksimal 60 request / menit per IP (cukup aman untuk user normal & form checkout, memotong habis script scraper loop)
+const ipRateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 menit
+const MAX_REQUESTS_PER_MINUTE = 60; // 60 request / menit per IP
+
 export async function onRequest(context) {
   const { request } = context;
 
@@ -36,7 +42,44 @@ export async function onRequest(context) {
     );
   }
 
-  // 3. Hanya proses caching pada metode GET
+  // 3. Anti-Abuse Rate Limiting per IP (Maks 60 req/menit untuk memutus script scraper)
+  const clientIp = request.headers.get("cf-connecting-ip") || "unknown";
+  if (clientIp !== "unknown") {
+    const now = Date.now();
+    const rateData = ipRateLimitMap.get(clientIp);
+
+    if (!rateData || now > rateData.resetTime) {
+      ipRateLimitMap.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    } else {
+      rateData.count++;
+      if (rateData.count > MAX_REQUESTS_PER_MINUTE) {
+        const retryAfter = Math.max(1, Math.ceil((rateData.resetTime - now) / 1000));
+        return new Response(
+          JSON.stringify({
+            error: "Too Many Requests: Batas laju permintaan terlampaui (maksimal 60 request/menit). Harap beri jeda atau cache data secara lokal.",
+            retryAfterSeconds: retryAfter
+          }),
+          {
+            status: 429,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Retry-After": retryAfter.toString()
+            }
+          }
+        );
+      }
+    }
+
+    // Bersihkan memori secara berkala
+    if (ipRateLimitMap.size > 2000) {
+      for (const [ip, data] of ipRateLimitMap.entries()) {
+        if (now > data.resetTime) ipRateLimitMap.delete(ip);
+      }
+    }
+  }
+
+  // 4. Hanya proses caching pada metode GET
   if (request.method !== "GET") {
     return await context.next();
   }

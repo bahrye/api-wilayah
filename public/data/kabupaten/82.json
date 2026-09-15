@@ -1,0 +1,62 @@
+[
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.01",
+    "nama": "Kabupaten Halmahera Barat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.02",
+    "nama": "Kabupaten Halmahera Tengah",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.03",
+    "nama": "Kabupaten Halmahera Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.04",
+    "nama": "Kabupaten Halmahera Selatan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.05",
+    "nama": "Kabupaten Kepulauan Sula",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.06",
+    "nama": "Kabupaten Halmahera Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.07",
+    "nama": "Kabupaten Pulau Morotai",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.08",
+    "nama": "Kabupaten Pulau Taliabu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.71",
+    "nama": "Kota Ternate",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Maluku Utara",
+    "kode": "82.72",
+    "nama": "Kota Tidore Kepulauan",
+    "tipe": "KOTA"
+  }
+]

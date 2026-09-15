@@ -1,0 +1,26 @@
+[
+  {
+    "nama_provinsi": "Papua Selatan",
+    "kode": "93.01",
+    "nama": "Kabupaten Merauke",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua Selatan",
+    "kode": "93.02",
+    "nama": "Kabupaten Boven Digoel",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua Selatan",
+    "kode": "93.03",
+    "nama": "Kabupaten Mappi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Papua Selatan",
+    "kode": "93.04",
+    "nama": "Kabupaten Asmat",
+    "tipe": "KABUPATEN"
+  }
+]

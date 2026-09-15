@@ -1,0 +1,86 @@
+[
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.01",
+    "nama": "Kabupaten Sambas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.02",
+    "nama": "Kabupaten Mempawah",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.03",
+    "nama": "Kabupaten Sanggau",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.04",
+    "nama": "Kabupaten Ketapang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.05",
+    "nama": "Kabupaten Sintang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.06",
+    "nama": "Kabupaten Kapuas Hulu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.07",
+    "nama": "Kabupaten Bengkayang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.08",
+    "nama": "Kabupaten Landak",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.09",
+    "nama": "Kabupaten Sekadau",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.10",
+    "nama": "Kabupaten Melawi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.11",
+    "nama": "Kabupaten Kayong Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.12",
+    "nama": "Kabupaten Kubu Raya",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.71",
+    "nama": "Kota Pontianak",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Kalimantan Barat",
+    "kode": "61.72",
+    "nama": "Kota Singkawang",
+    "tipe": "KOTA"
+  }
+]

@@ -1220,8 +1220,17 @@
 
       selKabupaten.innerHTML = '<option value="">Memuat...</option>';
       try {
-        const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
-        const data = await res.json();
+        let data = null;
+        try {
+          const staticRes = await fetch(`/data/kabupaten/${kode}.json`);
+          if (staticRes.ok) data = await staticRes.json();
+        } catch (e) {}
+
+        if (!data) {
+          const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
+          data = await res.json();
+        }
+
         if (Array.isArray(data)) setCachedData(cacheKey, data);
         populateSelect(selKabupaten, data, "Pilih Kabupaten/Kota");
       } catch (err) {

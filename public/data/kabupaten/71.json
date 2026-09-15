@@ -1,0 +1,92 @@
+[
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.01",
+    "nama": "Kabupaten Bolaang Mongondow",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.02",
+    "nama": "Kabupaten Minahasa",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.03",
+    "nama": "Kabupaten Kepulauan Sangihe",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.04",
+    "nama": "Kabupaten Kepulauan Talaud",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.05",
+    "nama": "Kabupaten Minahasa Selatan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.06",
+    "nama": "Kabupaten Minahasa Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.07",
+    "nama": "Kabupaten Minahasa Tenggara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.08",
+    "nama": "Kabupaten Bolaang Mongondow Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.09",
+    "nama": "Kabupaten Kep. Siau Tagulandang Biaro",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.10",
+    "nama": "Kabupaten Bolaang Mongondow Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.11",
+    "nama": "Kabupaten Bolaang Mongondow Selatan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.71",
+    "nama": "Kota Manado",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.72",
+    "nama": "Kota Bitung",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.73",
+    "nama": "Kota Tomohon",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sulawesi Utara",
+    "kode": "71.74",
+    "nama": "Kota Kotamobagu",
+    "tipe": "KOTA"
+  }
+]

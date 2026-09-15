@@ -1,0 +1,50 @@
+[
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.01",
+    "nama": "Kabupaten Pandeglang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.02",
+    "nama": "Kabupaten Lebak",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.03",
+    "nama": "Kabupaten Tangerang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.04",
+    "nama": "Kabupaten Serang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.71",
+    "nama": "Kota Tangerang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.72",
+    "nama": "Kota Cilegon",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.73",
+    "nama": "Kota Serang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Banten",
+    "kode": "36.74",
+    "nama": "Kota Tangerang Selatan",
+    "tipe": "KOTA"
+  }
+]

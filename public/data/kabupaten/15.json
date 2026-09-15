@@ -1,0 +1,68 @@
+[
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.01",
+    "nama": "Kabupaten Kerinci",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.02",
+    "nama": "Kabupaten Merangin",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.03",
+    "nama": "Kabupaten Sarolangun",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.04",
+    "nama": "Kabupaten Batanghari",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.05",
+    "nama": "Kabupaten Muaro Jambi",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.06",
+    "nama": "Kabupaten Tanjung Jabung Barat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.07",
+    "nama": "Kabupaten Tanjung Jabung Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.08",
+    "nama": "Kabupaten Bungo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.09",
+    "nama": "Kabupaten Tebo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.71",
+    "nama": "Kota Jambi",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Jambi",
+    "kode": "15.72",
+    "nama": "Kota Sungai Penuh",
+    "tipe": "KOTA"
+  }
+]

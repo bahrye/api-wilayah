@@ -1,0 +1,104 @@
+[
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.01",
+    "nama": "Kabupaten Ogan Komering Ulu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.02",
+    "nama": "Kabupaten Ogan Komering Ilir",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.03",
+    "nama": "Kabupaten Muara Enim",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.04",
+    "nama": "Kabupaten Lahat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.05",
+    "nama": "Kabupaten Musi Rawas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.06",
+    "nama": "Kabupaten Musi Banyuasin",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.07",
+    "nama": "Kabupaten Banyuasin",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.08",
+    "nama": "Kabupaten Ogan Komering Ulu Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.09",
+    "nama": "Kabupaten Ogan Komering Ulu Selatan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.10",
+    "nama": "Kabupaten Ogan Ilir",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.11",
+    "nama": "Kabupaten Empat Lawang",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.12",
+    "nama": "Kabupaten Penukal Abab Lematang Ilir",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.13",
+    "nama": "Kabupaten Musi Rawas Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.71",
+    "nama": "Kota Palembang",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.72",
+    "nama": "Kota Pagar Alam",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.73",
+    "nama": "Kota Lubuk Linggau",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Sumatera Selatan",
+    "kode": "16.74",
+    "nama": "Kota Prabumulih",
+    "tipe": "KOTA"
+  }
+]

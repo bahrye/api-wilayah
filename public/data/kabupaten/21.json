@@ -1,0 +1,44 @@
+[
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.01",
+    "nama": "Kabupaten Bintan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.02",
+    "nama": "Kabupaten Karimun",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.03",
+    "nama": "Kabupaten Natuna",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.04",
+    "nama": "Kabupaten Lingga",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.05",
+    "nama": "Kabupaten Kepulauan Anambas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.71",
+    "nama": "Kota Batam",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Kepulauan Riau",
+    "kode": "21.72",
+    "nama": "Kota Tanjung Pinang",
+    "tipe": "KOTA"
+  }
+]

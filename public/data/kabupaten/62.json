@@ -1,0 +1,86 @@
+[
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.01",
+    "nama": "Kabupaten Kotawaringin Barat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.02",
+    "nama": "Kabupaten Kotawaringin Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.03",
+    "nama": "Kabupaten Kapuas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.04",
+    "nama": "Kabupaten Barito Selatan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.05",
+    "nama": "Kabupaten Barito Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.06",
+    "nama": "Kabupaten Katingan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.07",
+    "nama": "Kabupaten Seruyan",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.08",
+    "nama": "Kabupaten Sukamara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.09",
+    "nama": "Kabupaten Lamandau",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.10",
+    "nama": "Kabupaten Gunung Mas",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.11",
+    "nama": "Kabupaten Pulang Pisau",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.12",
+    "nama": "Kabupaten Murung Raya",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.13",
+    "nama": "Kabupaten Barito Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Kalimantan Tengah",
+    "kode": "62.71",
+    "nama": "Kota Palangkaraya",
+    "tipe": "KOTA"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "nama_provinsi": "Daerah Istimewa Yogyakarta",
+    "kode": "34.01",
+    "nama": "Kabupaten Kulon Progo",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Daerah Istimewa Yogyakarta",
+    "kode": "34.02",
+    "nama": "Kabupaten Bantul",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Daerah Istimewa Yogyakarta",
+    "kode": "34.03",
+    "nama": "Kabupaten Gunungkidul",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Daerah Istimewa Yogyakarta",
+    "kode": "34.04",
+    "nama": "Kabupaten Sleman",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Daerah Istimewa Yogyakarta",
+    "kode": "34.71",
+    "nama": "Kota Yogyakarta",
+    "tipe": "KOTA"
+  }
+]

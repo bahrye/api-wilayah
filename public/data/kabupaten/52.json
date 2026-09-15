@@ -1,0 +1,62 @@
+[
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.01",
+    "nama": "Kabupaten Lombok Barat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.02",
+    "nama": "Kabupaten Lombok Tengah",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.03",
+    "nama": "Kabupaten Lombok Timur",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.04",
+    "nama": "Kabupaten Sumbawa",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.05",
+    "nama": "Kabupaten Dompu",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.06",
+    "nama": "Kabupaten Bima",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.07",
+    "nama": "Kabupaten Sumbawa Barat",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.08",
+    "nama": "Kabupaten Lombok Utara",
+    "tipe": "KABUPATEN"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.71",
+    "nama": "Kota Mataram",
+    "tipe": "KOTA"
+  },
+  {
+    "nama_provinsi": "Nusa Tenggara Barat",
+    "kode": "52.72",
+    "nama": "Kota Bima",
+    "tipe": "KOTA"
+  }
+]
