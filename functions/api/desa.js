@@ -4,8 +4,9 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kecamatan = url.searchParams.get("kecamatan");
   
-  if (!kecamatan || kecamatan.length !== 8) {
-    return new Response(JSON.stringify({ error: "Parameter 'kecamatan' tidak valid. Harus berupa kode 8 karakter (xx.xx.xx)" }), { status: 400 });
+  const trimmed = kecamatan ? kecamatan.trim() : "";
+  if (!trimmed || !/^\d{2}\.\d{2}\.\d{2}$/.test(trimmed)) {
+    return new Response(JSON.stringify({ error: "Parameter 'kecamatan' tidak valid. Harus berupa kode format xx.xx.xx (contoh: 11.01.01)" }), { status: 400 });
   }
 
   try {

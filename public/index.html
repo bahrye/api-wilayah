@@ -1024,6 +1024,35 @@
   </div>
 
   <script>
+    // LocalStorage Persistent Caching Helper (TTL: 7 hari)
+    const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+    function getCachedData(key) {
+      try {
+        const item = localStorage.getItem("api_wilayah_" + key);
+        if (!item) return null;
+        const parsed = JSON.parse(item);
+        if (Date.now() - parsed.timestamp > CACHE_TTL_MS) {
+          localStorage.removeItem("api_wilayah_" + key);
+          return null;
+        }
+        return parsed.data;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setCachedData(key, data) {
+      try {
+        localStorage.setItem("api_wilayah_" + key, JSON.stringify({
+          timestamp: Date.now(),
+          data: data
+        }));
+      } catch (e) {
+        // Abaikan jika quota localStorage penuh
+      }
+    }
+
     // DOM Elements for Demo API
     const selProvinsi = document.getElementById("provinsi");
     const selKabupaten = document.getElementById("kabupaten");
@@ -1036,25 +1065,45 @@
     );
     const btnCopyResult = document.getElementById("btn-copy-result");
 
-    // Fetch Stats
+    // Fetch Stats (LocalStorage -> CDN Statis -> API Fallback)
     async function fetchStats() {
       try {
-        const res = await fetch("/api/stats");
-        const data = await res.json();
+        // 1. Cek LocalStorage (0 Network Request)
+        let data = getCachedData("stats");
 
-        animateValue("stat-provinsi", data.provinsi);
-        animateValue("stat-kab_kota", data.kab_kota);
-        animateValue("stat-kecamatan", data.kecamatan);
-        animateValue("stat-desa_kel", data.desa_kel);
+        if (!data) {
+          // 2. Coba muat berkas statis dari Cloudflare CDN (0 Worker Invocation)
+          try {
+            const staticRes = await fetch("/data/stats.json");
+            if (staticRes.ok) {
+              data = await staticRes.json();
+            }
+          } catch (e) {}
 
-        if (data.kab_kota_split) {
-          animateValue("stat-kabupaten", data.kab_kota_split.KABUPATEN || 0);
-          animateValue("stat-kota", data.kab_kota_split.KOTA || 0);
+          // 3. Fallback ke endpoint API jika berkas statis gagal
+          if (!data) {
+            const res = await fetch("/api/stats");
+            data = await res.json();
+          }
+
+          if (data) setCachedData("stats", data);
         }
 
-        if (data.desa_kel_split) {
-          animateValue("stat-desa", data.desa_kel_split.DESA || 0);
-          animateValue("stat-kelurahan", data.desa_kel_split.KELURAHAN || 0);
+        if (data) {
+          animateValue("stat-provinsi", data.provinsi);
+          animateValue("stat-kab_kota", data.kab_kota);
+          animateValue("stat-kecamatan", data.kecamatan);
+          animateValue("stat-desa_kel", data.desa_kel);
+
+          if (data.kab_kota_split) {
+            animateValue("stat-kabupaten", data.kab_kota_split.KABUPATEN || 0);
+            animateValue("stat-kota", data.kab_kota_split.KOTA || 0);
+          }
+
+          if (data.desa_kel_split) {
+            animateValue("stat-desa", data.desa_kel_split.DESA || 0);
+            animateValue("stat-kelurahan", data.desa_kel_split.KELURAHAN || 0);
+          }
         }
       } catch (err) {
         console.error("Gagal memuat statistik", err);
@@ -1079,12 +1128,33 @@
       window.requestAnimationFrame(step);
     }
 
-    // Initial Data Fetch
+    // Initial Data Fetch Provinsi (LocalStorage -> CDN Statis -> API Fallback)
     async function fetchProvinsi() {
       try {
-        const res = await fetch("/api/provinsi");
-        const data = await res.json();
-        populateSelect(selProvinsi, data, "Pilih Provinsi");
+        // 1. Cek LocalStorage (0 Network Request)
+        let data = getCachedData("provinsi");
+
+        if (!data) {
+          // 2. Muat berkas statis dari Cloudflare CDN (0 Worker Invocation)
+          try {
+            const staticRes = await fetch("/data/provinsi.json");
+            if (staticRes.ok) {
+              data = await staticRes.json();
+            }
+          } catch (e) {}
+
+          // 3. Fallback ke endpoint API jika diperlukan
+          if (!data) {
+            const res = await fetch("/api/provinsi");
+            data = await res.json();
+          }
+
+          if (data && Array.isArray(data)) setCachedData("provinsi", data);
+        }
+
+        if (data && Array.isArray(data)) {
+          populateSelect(selProvinsi, data, "Pilih Provinsi");
+        }
       } catch (err) {
         console.error(err);
         selProvinsi.innerHTML = '<option value="">Gagal memuat data</option>';
@@ -1131,7 +1201,7 @@
       }
     }
 
-    // Event Listeners
+    // Event Listeners (dengan LocalStorage Caching per Kode Wilayah)
     selProvinsi.addEventListener("change", async (e) => {
       const kode = e.target.value;
       resetSelect(selKabupaten, "Pilih Kabupaten/Kota");
@@ -1141,10 +1211,18 @@
 
       if (!kode) return;
 
+      const cacheKey = "kab_" + kode;
+      const cached = getCachedData(cacheKey);
+      if (cached) {
+        populateSelect(selKabupaten, cached, "Pilih Kabupaten/Kota");
+        return;
+      }
+
       selKabupaten.innerHTML = '<option value="">Memuat...</option>';
       try {
         const res = await fetch(`/api/kabupaten?provinsi=${kode}`);
         const data = await res.json();
+        if (Array.isArray(data)) setCachedData(cacheKey, data);
         populateSelect(selKabupaten, data, "Pilih Kabupaten/Kota");
       } catch (err) {
         console.error(err);
@@ -1160,10 +1238,18 @@
 
       if (!kode) return;
 
+      const cacheKey = "kec_" + kode;
+      const cached = getCachedData(cacheKey);
+      if (cached) {
+        populateSelect(selKecamatan, cached, "Pilih Kecamatan");
+        return;
+      }
+
       selKecamatan.innerHTML = '<option value="">Memuat...</option>';
       try {
         const res = await fetch(`/api/kecamatan?kabupaten=${kode}`);
         const data = await res.json();
+        if (Array.isArray(data)) setCachedData(cacheKey, data);
         populateSelect(selKecamatan, data, "Pilih Kecamatan");
       } catch (err) {
         console.error(err);
@@ -1178,10 +1264,18 @@
 
       if (!kode) return;
 
+      const cacheKey = "desa_" + kode;
+      const cached = getCachedData(cacheKey);
+      if (cached) {
+        populateSelect(selDesa, cached, "Pilih Desa/Kelurahan");
+        return;
+      }
+
       selDesa.innerHTML = '<option value="">Memuat...</option>';
       try {
         const res = await fetch(`/api/desa?kecamatan=${kode}`);
         const data = await res.json();
+        if (Array.isArray(data)) setCachedData(cacheKey, data);
         populateSelect(selDesa, data, "Pilih Desa/Kelurahan");
       } catch (err) {
         console.error(err);
@@ -1208,16 +1302,34 @@
       }
     });
 
-    // Fetch Rekapitulasi Data Wilayah
+    // Fetch Rekapitulasi Data Wilayah (LocalStorage -> CDN Statis -> API Fallback)
     async function fetchRekapitulasi() {
       const tbody = document.getElementById("rekap-tbody");
       const tfoot = document.getElementById("rekap-tfoot");
       try {
-        const res = await fetch("/api/rekapitulasi");
-        const data = await res.json();
+        // 1. Cek LocalStorage
+        let data = getCachedData("rekapitulasi");
 
-        if (data.error) {
-          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--primary); padding: 2rem;">Gagal memuat data: ${data.error}</td></tr>`;
+        if (!data) {
+          // 2. Muat berkas statis dari Cloudflare CDN (0 Worker Invocation)
+          try {
+            const staticRes = await fetch("/data/rekapitulasi.json");
+            if (staticRes.ok) {
+              data = await staticRes.json();
+            }
+          } catch (e) {}
+
+          // 3. Fallback ke endpoint API jika diperlukan
+          if (!data) {
+            const res = await fetch("/api/rekapitulasi");
+            data = await res.json();
+          }
+
+          if (data && Array.isArray(data)) setCachedData("rekapitulasi", data);
+        }
+
+        if (!data || data.error) {
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--primary); padding: 2rem;">Gagal memuat data: ${(data && data.error) || 'Unknown error'}</td></tr>`;
           return;
         }
 
@@ -1273,7 +1385,30 @@
       fetchRekapitulasi();
     });
 
-    // Search Kodepos Logic
+    // Helper render kodepos result
+    function renderKodeposResults(data, kodepos) {
+      if (!data || data.length === 0) {
+        kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--text-muted);">Tidak ditemukan wilayah dengan kode pos ${kodepos}</p>`;
+      } else {
+        let html = `<p style="margin-bottom:1rem; font-weight:600;">Ditemukan ${data.length} wilayah:</p><div style="display:flex; flex-direction:column; gap:0.75rem;">`;
+        data.forEach(item => {
+          html += `
+              <div style="padding:0.75rem; border:1px solid var(--card-border); border-radius:6px; background:rgba(255,255,255,0.5);">
+                <div style="font-weight:600; color:var(--text-main); margin-bottom:0.25rem;">${item.nama} <span style="font-size:0.75rem; background:var(--code-bg); padding:2px 6px; border-radius:4px; font-weight:normal; margin-left:4px;">${item.tipe}</span></div>
+                <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.4;">
+                  Kecamatan: ${item.nama_kecamatan || '-'}<br/>
+                  Kabupaten/Kota: ${item.nama_kabupaten || '-'}<br/>
+                  Provinsi: ${item.nama_provinsi || '-'}
+                </div>
+              </div>
+            `;
+        });
+        html += '</div>';
+        kodeposSearchResult.innerHTML = html;
+      }
+    }
+
+    // Search Kodepos Logic (dengan LocalStorage Caching)
     const inputKodeposSearch = document.getElementById("input-kodepos-search");
     const btnSearchKodepos = document.getElementById("btn-search-kodepos");
     const kodeposSearchResult = document.getElementById("kodepos-search-result");
@@ -1282,9 +1417,18 @@
       const kodepos = inputKodeposSearch.value.trim();
       if (!kodepos) return;
 
+      kodeposSearchResult.style.display = "block";
+
+      // 1. Cek cache lokal
+      const cacheKey = "kodepos_" + kodepos;
+      const cached = getCachedData(cacheKey);
+      if (cached) {
+        renderKodeposResults(cached, kodepos);
+        return;
+      }
+
       btnSearchKodepos.textContent = "Mencari...";
       btnSearchKodepos.disabled = true;
-      kodeposSearchResult.style.display = "block";
       kodeposSearchResult.innerHTML = "<p style='text-align:center; color:var(--text-muted);'>Mencari data...</p>";
 
       try {
@@ -1294,57 +1438,40 @@
           kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">${data.error || 'Terjadi kesalahan'}</p>`;
         } else {
           const data = await res.json();
-          if (data.length === 0) {
-            kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--text-muted);">Tidak ditemukan wilayah dengan kode pos ${kodepos}</p>`;
-          } else {
-            let html = `<p style="margin-bottom:1rem; font-weight:600;">Ditemukan ${data.length} wilayah:</p><div style="display:flex; flex-direction:column; gap:0.75rem;">`;
-            data.forEach(item => {
-              html += `
-                  <div style="padding:0.75rem; border:1px solid var(--card-border); border-radius:6px; background:rgba(255,255,255,0.5);">
-                    <div style="font-weight:600; color:var(--text-main); margin-bottom:0.25rem;">${item.nama} <span style="font-size:0.75rem; background:var(--code-bg); padding:2px 6px; border-radius:4px; font-weight:normal; margin-left:4px;">${item.tipe}</span></div>
-                    <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.4;">
-                      Kecamatan: ${item.nama_kecamatan || '-'}<br/>
-                      Kabupaten/Kota: ${item.nama_kabupaten || '-'}<br/>
-                      Provinsi: ${item.nama_provinsi || '-'}
-                    </div>
-                  </div>
-                `;
-              });
-              html += '</div>';
-              kodeposSearchResult.innerHTML = html;
-            }
-          }
-        } catch (err) {
-          kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">Gagal mengambil data</p>`;
-        } finally {
-          btnSearchKodepos.textContent = "Cari";
-          btnSearchKodepos.disabled = false;
+          setCachedData(cacheKey, data);
+          renderKodeposResults(data, kodepos);
         }
-      });
-
-      inputKodeposSearch.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          btnSearchKodepos.click();
-        }
-      });
-
-      // Copy to clipboard functionality (Endpoints)
-      function copyUrl(path, btnElement) {
-        const fullUrl = window.location.origin + path;
-        navigator.clipboard
-          .writeText(fullUrl)
-          .then(() => {
-            const originalSvg = btnElement.innerHTML;
-            // Change icon to a checkmark temporarily (green)
-            btnElement.innerHTML = `<svg fill="none" stroke="#16a34a" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
-            setTimeout(() => {
-              btnElement.innerHTML = originalSvg;
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error("Failed to copy: ", err);
-          });
+      } catch (err) {
+        kodeposSearchResult.innerHTML = `<p style="text-align:center; color:var(--primary);">Gagal mengambil data</p>`;
+      } finally {
+        btnSearchKodepos.textContent = "Cari";
+        btnSearchKodepos.disabled = false;
       }
+    });
+
+    inputKodeposSearch.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        btnSearchKodepos.click();
+      }
+    });
+
+    // Copy to clipboard functionality (Endpoints)
+    function copyUrl(path, btnElement) {
+      const fullUrl = window.location.origin + path;
+      navigator.clipboard
+        .writeText(fullUrl)
+        .then(() => {
+          const originalSvg = btnElement.innerHTML;
+          // Change icon to a checkmark temporarily (green)
+          btnElement.innerHTML = `<svg fill="none" stroke="#16a34a" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+          setTimeout(() => {
+            btnElement.innerHTML = originalSvg;
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
+        });
+    }
   </script>
 </body>
 

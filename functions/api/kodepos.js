@@ -4,8 +4,9 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kodepos = url.searchParams.get("kodepos");
   
-  if (!kodepos) {
-    return new Response(JSON.stringify({ error: "Parameter 'kodepos' tidak disertakan" }), { 
+  const trimmedKodepos = kodepos ? kodepos.trim() : "";
+  if (!trimmedKodepos || !/^\d{5}$/.test(trimmedKodepos)) {
+    return new Response(JSON.stringify({ error: "Parameter 'kodepos' tidak valid. Harus berupa 5 digit angka (contoh: 10110)" }), { 
       status: 400,
       headers: { "Content-Type": "application/json" }
     });

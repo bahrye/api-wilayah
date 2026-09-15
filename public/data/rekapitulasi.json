@@ -1,0 +1,344 @@
+[
+  {
+    "provinsi_kode": "11",
+    "provinsi_nama": "Aceh",
+    "kabupaten": 18,
+    "kota": 5,
+    "kecamatan": 290,
+    "kelurahan": 0,
+    "desa": 6496
+  },
+  {
+    "provinsi_kode": "12",
+    "provinsi_nama": "Sumatera Utara",
+    "kabupaten": 25,
+    "kota": 8,
+    "kecamatan": 447,
+    "kelurahan": 693,
+    "desa": 5316
+  },
+  {
+    "provinsi_kode": "13",
+    "provinsi_nama": "Sumatera Barat",
+    "kabupaten": 12,
+    "kota": 7,
+    "kecamatan": 179,
+    "kelurahan": 230,
+    "desa": 1035
+  },
+  {
+    "provinsi_kode": "14",
+    "provinsi_nama": "Riau",
+    "kabupaten": 10,
+    "kota": 2,
+    "kecamatan": 172,
+    "kelurahan": 271,
+    "desa": 1590
+  },
+  {
+    "provinsi_kode": "15",
+    "provinsi_nama": "Jambi",
+    "kabupaten": 9,
+    "kota": 2,
+    "kecamatan": 144,
+    "kelurahan": 171,
+    "desa": 1413
+  },
+  {
+    "provinsi_kode": "16",
+    "provinsi_nama": "Sumatera Selatan",
+    "kabupaten": 13,
+    "kota": 4,
+    "kecamatan": 241,
+    "kelurahan": 403,
+    "desa": 2854
+  },
+  {
+    "provinsi_kode": "17",
+    "provinsi_nama": "Bengkulu",
+    "kabupaten": 9,
+    "kota": 1,
+    "kecamatan": 129,
+    "kelurahan": 172,
+    "desa": 1335
+  },
+  {
+    "provinsi_kode": "18",
+    "provinsi_nama": "Lampung",
+    "kabupaten": 13,
+    "kota": 2,
+    "kecamatan": 229,
+    "kelurahan": 205,
+    "desa": 2446
+  },
+  {
+    "provinsi_kode": "19",
+    "provinsi_nama": "Kepulauan Bangka Belitung",
+    "kabupaten": 6,
+    "kota": 1,
+    "kecamatan": 47,
+    "kelurahan": 84,
+    "desa": 309
+  },
+  {
+    "provinsi_kode": "21",
+    "provinsi_nama": "Kepulauan Riau",
+    "kabupaten": 5,
+    "kota": 2,
+    "kecamatan": 80,
+    "kelurahan": 144,
+    "desa": 275
+  },
+  {
+    "provinsi_kode": "31",
+    "provinsi_nama": "Daerah Khusus Ibukota Jakarta",
+    "kabupaten": 1,
+    "kota": 5,
+    "kecamatan": 44,
+    "kelurahan": 267,
+    "desa": 0
+  },
+  {
+    "provinsi_kode": "32",
+    "provinsi_nama": "Jawa Barat",
+    "kabupaten": 18,
+    "kota": 9,
+    "kecamatan": 627,
+    "kelurahan": 646,
+    "desa": 5311
+  },
+  {
+    "provinsi_kode": "33",
+    "provinsi_nama": "Jawa Tengah",
+    "kabupaten": 29,
+    "kota": 6,
+    "kecamatan": 576,
+    "kelurahan": 753,
+    "desa": 7810
+  },
+  {
+    "provinsi_kode": "34",
+    "provinsi_nama": "Daerah Istimewa Yogyakarta",
+    "kabupaten": 4,
+    "kota": 1,
+    "kecamatan": 78,
+    "kelurahan": 46,
+    "desa": 392
+  },
+  {
+    "provinsi_kode": "35",
+    "provinsi_nama": "Jawa Timur",
+    "kabupaten": 29,
+    "kota": 9,
+    "kecamatan": 665,
+    "kelurahan": 771,
+    "desa": 7696
+  },
+  {
+    "provinsi_kode": "36",
+    "provinsi_nama": "Banten",
+    "kabupaten": 4,
+    "kota": 4,
+    "kecamatan": 155,
+    "kelurahan": 314,
+    "desa": 1238
+  },
+  {
+    "provinsi_kode": "51",
+    "provinsi_nama": "Bali",
+    "kabupaten": 8,
+    "kota": 1,
+    "kecamatan": 57,
+    "kelurahan": 80,
+    "desa": 636
+  },
+  {
+    "provinsi_kode": "52",
+    "provinsi_nama": "Nusa Tenggara Barat",
+    "kabupaten": 8,
+    "kota": 2,
+    "kecamatan": 116,
+    "kelurahan": 144,
+    "desa": 1013
+  },
+  {
+    "provinsi_kode": "53",
+    "provinsi_nama": "Nusa Tenggara Timur",
+    "kabupaten": 21,
+    "kota": 1,
+    "kecamatan": 314,
+    "kelurahan": 304,
+    "desa": 3105
+  },
+  {
+    "provinsi_kode": "61",
+    "provinsi_nama": "Kalimantan Barat",
+    "kabupaten": 12,
+    "kota": 2,
+    "kecamatan": 174,
+    "kelurahan": 99,
+    "desa": 2034
+  },
+  {
+    "provinsi_kode": "62",
+    "provinsi_nama": "Kalimantan Tengah",
+    "kabupaten": 13,
+    "kota": 1,
+    "kecamatan": 136,
+    "kelurahan": 139,
+    "desa": 1429
+  },
+  {
+    "provinsi_kode": "63",
+    "provinsi_nama": "Kalimantan Selatan",
+    "kabupaten": 11,
+    "kota": 2,
+    "kecamatan": 156,
+    "kelurahan": 143,
+    "desa": 1864
+  },
+  {
+    "provinsi_kode": "64",
+    "provinsi_nama": "Kalimantan Timur",
+    "kabupaten": 7,
+    "kota": 3,
+    "kecamatan": 105,
+    "kelurahan": 197,
+    "desa": 838
+  },
+  {
+    "provinsi_kode": "65",
+    "provinsi_nama": "Kalimantan Utara",
+    "kabupaten": 4,
+    "kota": 1,
+    "kecamatan": 55,
+    "kelurahan": 35,
+    "desa": 401
+  },
+  {
+    "provinsi_kode": "71",
+    "provinsi_nama": "Sulawesi Utara",
+    "kabupaten": 11,
+    "kota": 4,
+    "kecamatan": 170,
+    "kelurahan": 332,
+    "desa": 1505
+  },
+  {
+    "provinsi_kode": "72",
+    "provinsi_nama": "Sulawesi Tengah",
+    "kabupaten": 12,
+    "kota": 1,
+    "kecamatan": 177,
+    "kelurahan": 175,
+    "desa": 1826
+  },
+  {
+    "provinsi_kode": "73",
+    "provinsi_nama": "Sulawesi Selatan",
+    "kabupaten": 21,
+    "kota": 3,
+    "kecamatan": 306,
+    "kelurahan": 772,
+    "desa": 2165
+  },
+  {
+    "provinsi_kode": "74",
+    "provinsi_nama": "Sulawesi Tenggara",
+    "kabupaten": 15,
+    "kota": 2,
+    "kecamatan": 221,
+    "kelurahan": 376,
+    "desa": 1903
+  },
+  {
+    "provinsi_kode": "75",
+    "provinsi_nama": "Gorontalo",
+    "kabupaten": 5,
+    "kota": 1,
+    "kecamatan": 77,
+    "kelurahan": 72,
+    "desa": 654
+  },
+  {
+    "provinsi_kode": "76",
+    "provinsi_nama": "Sulawesi Barat",
+    "kabupaten": 6,
+    "kota": 0,
+    "kecamatan": 69,
+    "kelurahan": 73,
+    "desa": 571
+  },
+  {
+    "provinsi_kode": "81",
+    "provinsi_nama": "Maluku",
+    "kabupaten": 9,
+    "kota": 2,
+    "kecamatan": 119,
+    "kelurahan": 35,
+    "desa": 1200
+  },
+  {
+    "provinsi_kode": "82",
+    "provinsi_nama": "Maluku Utara",
+    "kabupaten": 8,
+    "kota": 2,
+    "kecamatan": 118,
+    "kelurahan": 118,
+    "desa": 1067
+  },
+  {
+    "provinsi_kode": "91",
+    "provinsi_nama": "Papua",
+    "kabupaten": 8,
+    "kota": 1,
+    "kecamatan": 105,
+    "kelurahan": 51,
+    "desa": 948
+  },
+  {
+    "provinsi_kode": "92",
+    "provinsi_nama": "Papua Barat",
+    "kabupaten": 7,
+    "kota": 0,
+    "kecamatan": 91,
+    "kelurahan": 21,
+    "desa": 803
+  },
+  {
+    "provinsi_kode": "93",
+    "provinsi_nama": "Papua Selatan",
+    "kabupaten": 4,
+    "kota": 0,
+    "kecamatan": 82,
+    "kelurahan": 13,
+    "desa": 677
+  },
+  {
+    "provinsi_kode": "94",
+    "provinsi_nama": "Papua Tengah",
+    "kabupaten": 8,
+    "kota": 0,
+    "kecamatan": 130,
+    "kelurahan": 36,
+    "desa": 1167
+  },
+  {
+    "provinsi_kode": "95",
+    "provinsi_nama": "Papua Pegunungan",
+    "kabupaten": 8,
+    "kota": 0,
+    "kecamatan": 252,
+    "kelurahan": 10,
+    "desa": 2617
+  },
+  {
+    "provinsi_kode": "96",
+    "provinsi_nama": "Papua Barat Daya",
+    "kabupaten": 5,
+    "kota": 1,
+    "kecamatan": 132,
+    "kelurahan": 74,
+    "desa": 937
+  }
+]

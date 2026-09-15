@@ -4,8 +4,9 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const kode = url.searchParams.get("kode");
   
-  if (!kode) {
-    return new Response(JSON.stringify({ error: "Parameter 'kode' tidak disertakan" }), { status: 400 });
+  const trimmedKode = kode ? kode.trim() : "";
+  if (!trimmedKode || !/^\d{2}(\.\d{2}){0,2}(\.\d{4})?$/.test(trimmedKode)) {
+    return new Response(JSON.stringify({ error: "Parameter 'kode' tidak valid. Format harus xx, xx.xx, xx.xx.xx, atau xx.xx.xx.xxxx (contoh: 11.01.01.2001)" }), { status: 400 });
   }
 
   try {

@@ -49,9 +49,7 @@ export async function onRequest({ env }) {
     return new Response(JSON.stringify(stats), {
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0"
+        "Cache-Control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
       }
     });
   } catch (e) {

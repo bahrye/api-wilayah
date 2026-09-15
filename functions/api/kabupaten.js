@@ -4,8 +4,9 @@ export async function onRequest({ request, env }) {
   const url = new URL(request.url);
   const provinsi = url.searchParams.get("provinsi");
   
-  if (!provinsi || provinsi.length !== 2) {
-    return new Response(JSON.stringify({ error: "Parameter 'provinsi' tidak valid. Harus berupa kode 2 karakter (xx)" }), { status: 400 });
+  const trimmed = provinsi ? provinsi.trim() : "";
+  if (!trimmed || !/^\d{2}$/.test(trimmed)) {
+    return new Response(JSON.stringify({ error: "Parameter 'provinsi' tidak valid. Harus berupa kode 2 digit angka (contoh: 11)" }), { status: 400 });
   }
 
   try {

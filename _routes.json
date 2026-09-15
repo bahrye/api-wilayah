@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*"
+  ],
+  "exclude": [
+    "/data/*",
+    "/favicon.svg",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/index.html",
+    "/404.html"
+  ]
+}

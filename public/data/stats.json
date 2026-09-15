@@ -1,0 +1,14 @@
+{
+  "provinsi": 38,
+  "kab_kota": 514,
+  "kab_kota_split": {
+    "KABUPATEN": 416,
+    "KOTA": 98
+  },
+  "kecamatan": 7265,
+  "desa_kel": 83345,
+  "desa_kel_split": {
+    "DESA": 74876,
+    "KELURAHAN": 8469
+  }
+}
